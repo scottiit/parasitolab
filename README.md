@@ -1,0 +1,76 @@
+# PARASITOLAB — O mistério das estruturas
+
+Jogo educativo de investigação parasitológica da Equipe 4, desenvolvido para apoiar o estudo de organismos e seus estágios biológicos no curso de Farmácia.
+
+## Objetivo
+
+Identificar estruturas representadas em dez casos didáticos, observando as evidências, consultando pistas e revisando as explicações após cada resposta.
+
+## Como jogar
+
+1. Consulte a **Colinha** antes de iniciar: cada ficha apresenta o organismo, seu estágio, características, diferenças e um botão para a referência CDC DPDx.
+2. Inicie a investigação. As dez fichas e as três alternativas de cada questão são embaralhadas a cada nova partida. A colinha fica bloqueada durante o quiz.
+3. Observe o esquema, amplie a imagem e abra até duas pistas, sem perder pontos.
+4. Escolha uma alternativa e confira a explicação. Cada acerto vale **100 pontos**, até **1.000 pontos** por partida.
+5. Ao concluir, revise o relatório ou jogue novamente. A colinha volta a ficar disponível.
+
+## Organismos e estágios representados
+
+| Organismo | Estágio |
+|---|---|
+| *Entamoeba histolytica* | Trofozoíto |
+| *Entamoeba coli* | Cisto maduro |
+| *Endolimax nana* | Cisto maduro |
+| *Iodamoeba bütschlii* | Cisto |
+| *Giardia duodenalis* | Trofozoíto |
+| *Blastocystis hominis* | Forma vacuolar |
+| *Cryptosporidium parvum / hominis* | Oocisto |
+| *Cystoisospora belli* | Oocisto imaturo |
+| *Balantioides coli* | Trofozoíto |
+| *Trichomonas vaginalis* | Trofozoíto |
+
+A ordem da tabela é apenas de referência; as missões são embaralhadas no jogo.
+
+## Progresso e relatórios
+
+O progresso fica salvo no navegador, incluindo a ordem das questões e alternativas. É possível continuar a investigação após recarregar a página.
+
+O histórico mantém os **últimos dez relatórios** e preserva a **melhor partida**, mesmo quando ela sai dessa lista. A melhor é a de maior pontuação; em empate, vence o menor tempo de conclusão.
+
+O tempo é contado do início até a última resposta, incluindo interrupções. Partidas antigas sem medição exibem “Tempo não registrado”.
+
+Os dados ficam no `localStorage` deste navegador. Não há cadastro, servidor de dados nem sincronização entre dispositivos. Apagar os dados do navegador pode remover o progresso e os relatórios.
+
+## Nota científica
+
+As imagens são **esquemas didáticos**, não microfotografias. Não estão em escala e não constituem material diagnóstico.
+
+A morfologia isolada pode ser insuficiente para confirmar *E. histolytica* e distinguir espécies de *Cryptosporidium*. As fichas preservam essas ressalvas e indicam as referências do [CDC DPDx](https://www.cdc.gov/dpdx/).
+
+Os estágios e os materiais visuais devem ser validados com a professora antes do uso em avaliação acadêmica.
+
+## Tecnologia e arquivos
+
+HTML, CSS e JavaScript estáticos, sem dependências externas e sem etapa de compilação. Interface adaptada a celular e desktop, com navegação por teclado.
+
+| Arquivo | Responsabilidade |
+|---|---|
+| `index.html` | Página de entrada |
+| `styles.css` | Aparência e responsividade |
+| `data.js` | Organismos, casos, referências e créditos |
+| `logic.js` | Pontuação, embaralhamento e armazenamento local |
+| `app.js` | Telas, navegação e interação |
+| `assets/` | Imagens SVG didáticas |
+| `.nojekyll` | Publicação dos arquivos estáticos no GitHub Pages |
+
+## Executar e publicar
+
+Para uso local, baixe o repositório mantendo sua estrutura de pastas e abra `index.html` no navegador.
+
+Para publicar no GitHub Pages, em **Settings → Pages**, escolha **Deploy from a branch**, selecione **main** e **/(root)** e salve. O GitHub informará o endereço após a publicação. Mantenha `index.html` na raiz; os caminhos dos arquivos são relativos.
+
+## Créditos
+
+Site desenvolvido por **Adriano Scotti**, do curso de **Ciência da Computação da UFOPA**, para auxiliar a **Equipe 4** e as alunas do curso de **Farmácia**.
+
+Os campos de matéria, disciplina e nomes das alunas estão reservados no objeto `credits` de `data.js` para preenchimento posterior. Enquanto estiverem vazios, não aparecem no site.
