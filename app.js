@@ -196,7 +196,8 @@
     const credits = data.credits;
     const details = [];
     if (credits.subject) details.push(`Matéria: ${escapeHtml(credits.subject)}.`);
-    if (credits.discipline) details.push(`Disciplina: ${escapeHtml(credits.discipline)}.`);
+    if (credits.discipline) details.push(`Trabalho da disciplina de ${escapeHtml(credits.discipline)}.`);
+    if (credits.professor) details.push(`Professora: ${escapeHtml(credits.professor)}.`);
     if (credits.students.length) details.push(`Alunas: ${credits.students.map(escapeHtml).join(", ")}.`);
     return `Site desenvolvido por ${escapeHtml(credits.developer)}, do curso de ${escapeHtml(credits.developerCourse)} da ${escapeHtml(credits.institution)}, para auxiliar a ${escapeHtml(credits.team)} e as alunas do curso de ${escapeHtml(credits.studentCourse)}. ${details.join(" ")}`;
   }

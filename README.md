@@ -73,4 +73,14 @@ Para publicar no GitHub Pages, em **Settings → Pages**, escolha **Deploy from 
 
 Site desenvolvido por **Adriano Scotti**, do curso de **Ciência da Computação da UFOPA**, para auxiliar a **Equipe 4** e as alunas do curso de **Farmácia**.
 
-Os campos de matéria, disciplina e nomes das alunas estão reservados no objeto `credits` de `data.js` para preenchimento posterior. Enquanto estiverem vazios, não aparecem no site.
+Trabalho da disciplina de **Parasitologia**, com a professora **Sandra Layse Sarrazin**.
+
+**Equipe 4 — alunas de Farmácia:**
+
+1. Maria Eduarda Gomes
+2. Marielen Araújo
+3. Helloane Santos
+4. Ana Paula Azevedo
+5. Maria Eduarda Maduro
+
+Os créditos exibidos no site estão no objeto `credits` de `data.js`.

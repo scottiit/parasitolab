@@ -11,8 +11,15 @@
     "team": "Equipe 4",
     "studentCourse": "Farmácia",
     "subject": "",
-    "discipline": "",
-    "students": []
+    "discipline": "Parasitologia",
+    "professor": "Sandra Layse Sarrazin",
+    "students": [
+      "Maria Eduarda Gomes",
+      "Marielen Araújo",
+      "Helloane Santos",
+      "Ana Paula Azevedo",
+      "Maria Eduarda Maduro"
+    ]
   },
   "organisms": [
     {
