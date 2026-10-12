@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#081c22">
+  <meta name="description" content="PARASITOLAB — O mistério das estruturas. Um jogo educativo de investigação parasitológica da Equipe 4.">
+  <meta property="og:title" content="PARASITOLAB | O mistério das estruturas">
+  <meta property="og:description" content="Observe. Investigue. Aprenda. Resolva as missões do laboratório!">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./data.js" defer></script>
+  <script src="./logic.js" defer></script>
+  <script src="./app.js" defer></script>
+  <title>PARASITOLAB — O mistério das estruturas</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-content">
+        <button class="brand" type="button" data-action="home" aria-label="PARASITOLAB — ir para o início">
+          <span class="brand-icon"><img src="./assets/favicon.svg" alt="" width="30" height="30"></span>
+          <span class="brand-copy"><strong>PARASITO<span>LAB</span></strong><small>O MISTÉRIO DAS ESTRUTURAS</small></span>
+        </button>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <button class="nav-item is-current" type="button" data-action="home" data-nav="home" aria-current="page">Início</button>
+          <button class="nav-item" type="button" data-action="guide" data-nav="guide">Colinha</button>
+          <button class="nav-item" type="button" data-action="mission" data-nav="mission" hidden>Missões</button>
+          <button class="nav-item" type="button" data-action="reports" data-nav="results" hidden>Relatórios</button>
+        </nav>
+        <div class="header-meta" aria-label="Jogo da Equipe 4">
+          <span class="header-meta-dot" aria-hidden="true"></span>
+          <span>PROJETO EDUCACIONAL <b>/ 04</b></span>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="container main-content" tabindex="-1">
+      <noscript>
+        <section class="noscript-card">
+          <h1>Ative o JavaScript para jogar</h1>
+          <p>O PARASITOLAB funciona inteiramente no navegador e precisa de JavaScript para mostrar os casos, pistas e respostas.</p>
+        </section>
+      </noscript>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p><strong>PARASITOLAB</strong> <span>• Observar, investigar e aprender.</span></p>
+        <p>Equipe 4 <span class="dot-sep">·</span> Uso educativo <span class="dot-sep">·</span> Sem cadastro e sem envio de respostas</p>
+      </div>
+    </footer>
+  </div>
+  <div id="modal-root"></div>
+  <div id="live-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

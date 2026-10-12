@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="560" viewBox="0 0 700 560" role="img" aria-label="Arte conceitual de pesquisa biológica">
+<defs>
+<radialGradient id="scope"><stop stop-color="#2b5b55"/><stop offset=".63" stop-color="#164043"/><stop offset="1" stop-color="#0b2830"/></radialGradient>
+<linearGradient id="subject" x1=".1" y1=".1" x2="1" y2="1"><stop stop-color="#c1f7ba"/><stop offset=".48" stop-color="#7bdaa9"/><stop offset="1" stop-color="#4ac9af"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="15"/></filter>
+</defs>
+<circle cx="350" cy="274" r="240" fill="none" stroke="#89d8bd" opacity=".14"/>
+<circle cx="350" cy="274" r="214" fill="url(#scope)" stroke="#88e7b9" stroke-opacity=".53" stroke-width="2"/>
+<circle cx="350" cy="274" r="185" fill="none" stroke="#9ce5bb" stroke-opacity=".21" stroke-dasharray="3 11"/>
+<circle cx="350" cy="274" r="161" fill="none" stroke="#9ce5bb" stroke-opacity=".09"/>
+<g stroke="#90dfbc" opacity=".35"><path d="M350 6v58M350 484v65M85 274h57M558 274h57"/><circle cx="350" cy="274" r="225" fill="none" stroke-dasharray="1 21"/></g>
+<path d="M350 118C283 127 255 179 261 249C265 331 318 400 350 425C391 391 440 328 441 248C444 181 410 125 350 118Z" fill="#91ecc5" opacity=".29" filter="url(#glow)"/>
+<g fill="none" stroke="#8ce9b9" stroke-width="4" stroke-linecap="round" opacity=".79">
+<path d="M280 311C228 379 211 410 181 434"/><path d="M302 369C275 421 277 440 267 476"/>
+<path d="M335 423C316 463 324 481 318 499"/><path d="M365 423C382 463 378 480 391 500"/>
+<path d="M402 370C435 419 432 441 456 476"/><path d="M423 309C472 372 496 409 532 432"/>
+</g>
+<path d="M350 124C293 125 261 168 261 233C261 317 306 386 350 424C394 386 439 317 439 233C439 168 405 125 350 124Z" fill="url(#subject)" fill-opacity=".86" stroke="#d6ffd4" stroke-width="4"/>
+<path d="M350 138C306 138 279 173 279 230C279 290 307 345 350 385" fill="none" stroke="#efffe3" stroke-opacity=".45" stroke-width="5"/>
+<ellipse cx="350" cy="260" rx="63" ry="84" fill="#3a9e96" fill-opacity=".20" stroke="#beeac6" stroke-opacity=".52" stroke-width="3"/>
+<ellipse cx="318" cy="214" rx="25" ry="29" fill="#f7d79b" stroke="#f7eebc" stroke-width="3"/>
+<ellipse cx="382" cy="214" rx="25" ry="29" fill="#f7d79b" stroke="#f7eebc" stroke-width="3"/>
+<circle cx="318" cy="216" r="9" fill="#87686e"/><circle cx="382" cy="216" r="9" fill="#87686e"/>
+<g fill="none" stroke="#2d8c85" stroke-width="7" stroke-linecap="round"><path d="M331 318q8 11 19 2"/><path d="M369 318q-8 11-19 2"/></g>
+<g fill="#bff0bb" font-family="Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="2"><text x="60" y="89">SCAN.004</text><text x="534" y="479">40X / SIM</text></g>
+<g stroke="#86d7bc" opacity=".63" stroke-width="2"><path d="M72 109h47M72 109v49M628 109h-47M628 109v49M72 444h47M72 444v-49M628 444h-47M628 444v-49"/></g>
+<g fill="#a8edd2"><circle cx="116" cy="270" r="3" opacity=".7"/><circle cx="587" cy="279" r="3" opacity=".65"/><circle cx="517" cy="124" r="2" opacity=".6"/></g>
+</svg>

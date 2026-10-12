@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Entamoeba histolytica</title>
+<desc id="desc">Trofozoíto ameboide com núcleo único e pseudópodes Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<path d="M320 157Q278 139 278 199Q259 238 294 253Q271 293 294 332Q278 381 327 394Q343 459 402 438Q456 470 477 423Q534 414 526 368Q566 341 524 294Q547 253 509 219Q514 165 461 170Q418 111 372 143Q337 118 320 157Z" fill="url(#cell)" stroke="#c8f6df" stroke-width="6"/>
+<path d="M322 168Q309 212 327 227Q303 280 329 310Q314 355 352 388" fill="none" stroke="#e9fff1" stroke-width="5" stroke-opacity=".36" stroke-linecap="round"/>
+<g fill="#369ca5" fill-opacity=".36"><ellipse cx="448" cy="324" rx="19" ry="14"/><ellipse cx="361" cy="363" rx="13" ry="11"/><ellipse cx="367" cy="222" rx="12" ry="9"/></g>
+<ellipse cx="408" cy="274" rx="38" ry="40" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="411" cy="275" r="15.2" fill="#81505e"/><circle cx="403" cy="269" r="4.9" fill="#fff6db" opacity=".65"/>
+<g fill="#bf7878" stroke="#f5bbac" stroke-width="2"><circle cx="348" cy="293" r="15"/><circle cx="456" cy="258" r="13"/></g>
+<path d="M466 199Q500 223 506 257" fill="none" stroke="#efffea" stroke-opacity=".4" stroke-width="4"/>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Balantioides coli</title>
+<desc id="desc">Trofozoíto ciliado com macronúcleo reniforme Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<g fill="none" stroke="#bae9c7" stroke-width="3" stroke-opacity=".85" stroke-linecap="round"><path d="M569 281Q581 279 577 285"/><path d="M568 308Q583 308 583 315"/><path d="M563 334Q582 336 585 347"/><path d="M556 359Q567 366 562 380"/><path d="M546 384Q560 385 558 394"/><path d="M534 406Q550 411 551 423"/><path d="M520 426Q529 435 523 452"/><path d="M503 444Q514 457 510 479"/><path d="M484 459Q497 462 493 473"/><path d="M465 470Q473 478 464 493"/><path d="M444 479Q452 491 444 511"/><path d="M422 484Q430 501 421 525"/><path d="M400 486Q406 489 396 500"/><path d="M378 484Q383 491 372 506"/><path d="M356 479Q359 490 346 509"/><path d="M335 470Q340 484 329 506"/><path d="M316 459Q318 459 304 468"/><path d="M297 444Q296 447 279 459"/><path d="M280 426Q284 432 272 445"/><path d="M266 406Q266 412 251 427"/><path d="M254 384Q250 381 231 387"/><path d="M244 359Q248 358 235 364"/><path d="M237 334Q237 332 220 338"/><path d="M232 308Q228 304 208 308"/><path d="M231 281Q235 275 223 277"/><path d="M232 254Q233 246 217 247"/><path d="M237 228Q234 218 215 215"/><path d="M244 203Q249 188 238 182"/><path d="M254 179Q256 169 242 168"/><path d="M266 156Q266 143 249 139"/><path d="M280 136Q287 119 277 110"/><path d="M297 118Q302 97 290 83"/><path d="M315 103Q319 92 307 89"/><path d="M335 92Q343 76 336 69"/><path d="M356 83Q364 63 356 51"/><path d="M378 78Q386 53 379 37"/><path d="M400 76Q410 65 404 62"/><path d="M422 78Q433 63 428 56"/><path d="M444 83Q457 64 454 53"/><path d="M465 92Q476 70 471 56"/><path d="M484 103Q498 95 496 94"/><path d="M503 118Q520 107 521 103"/><path d="M520 136Q532 122 528 117"/><path d="M534 156Q550 142 549 135"/><path d="M546 178Q566 173 569 175"/><path d="M556 203Q568 196 565 198"/><path d="M563 228Q579 222 580 224"/><path d="M568 254Q588 250 592 254"/></g>
+<ellipse cx="400" cy="281" rx="170" ry="204" fill="url(#cell)" stroke="#e1f9d7" stroke-width="7"/>
+<ellipse cx="400" cy="281" rx="151" ry="185" fill="none" stroke="#f4ffea" stroke-opacity=".22" stroke-width="4"/>
+<path d="M364 211C385 173 452 178 472 213C449 207 425 221 426 258C428 285 464 312 475 336C432 361 362 332 349 288C340 259 355 230 364 211Z" fill="url(#nuc)" stroke="#ffebc5" stroke-width="5"/>
+<circle cx="330" cy="338" r="23" fill="#dfb49c" stroke="#ffebc6" stroke-width="3"/>
+<path d="M304 190Q330 216 354 215" fill="none" stroke="#205e6c" stroke-width="19" stroke-linecap="round"/>
+<path d="M297 189Q328 208 350 213" fill="none" stroke="#fae4b0" stroke-width="4"/>
+<g fill="#488b8b" fill-opacity=".33"><circle cx="470" cy="372" r="15"/><circle cx="339" cy="275" r="13"/><circle cx="419" cy="394" r="11"/><circle cx="496" cy="271" r="8"/></g>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

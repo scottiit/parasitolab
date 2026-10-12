@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Entamoeba coli</title>
+<desc id="desc">Cisto maduro com oito núcleos Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<circle cx="400" cy="280" r="184" fill="url(#cell)" stroke="#d6f9e2" stroke-width="8"/>
+<circle cx="400" cy="280" r="171" fill="none" stroke="#e5fff2" stroke-opacity=".28" stroke-width="5"/>
+<g fill="#3799a1" fill-opacity=".18"><ellipse cx="395" cy="270" rx="106" ry="112"/><circle cx="426" cy="244" r="38"/></g>
+<ellipse cx="350" cy="195" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="353" cy="196" r="8.8" fill="#81505e"/><circle cx="345" cy="190" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="411" cy="179" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="414" cy="180" r="8.8" fill="#81505e"/><circle cx="406" cy="174" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="463" cy="210" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="466" cy="211" r="8.8" fill="#81505e"/><circle cx="458" cy="205" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="488" cy="269" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="491" cy="270" r="8.8" fill="#81505e"/><circle cx="483" cy="264" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="463" cy="335" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="466" cy="336" r="8.8" fill="#81505e"/><circle cx="458" cy="330" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="405" cy="368" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="408" cy="369" r="8.8" fill="#81505e"/><circle cx="400" cy="363" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="343" cy="345" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="346" cy="346" r="8.8" fill="#81505e"/><circle cx="338" cy="340" r="2.9" fill="#fff6db" opacity=".65"/><ellipse cx="315" cy="270" rx="22" ry="24" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="318" cy="271" r="8.8" fill="#81505e"/><circle cx="310" cy="265" r="2.9" fill="#fff6db" opacity=".65"/>
+<g fill="#7fb5ac" opacity=".25"><circle cx="382" cy="280" r="12"/><circle cx="430" cy="297" r="14"/></g>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

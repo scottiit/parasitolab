@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Cryptosporidium spp.</title>
+<desc id="desc">Oocisto esférico com quatro esporozoítos internos ilustrados Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<circle cx="405" cy="279" r="140" fill="url(#cell)" stroke="#e5fbdc" stroke-width="6"/><circle cx="405" cy="279" r="130" fill="none" stroke="#f8f2d6" stroke-width="2" stroke-opacity=".38"/><ellipse cx="357.4" cy="248.2" rx="32.2" ry="23.8" fill="#e7c7a6" fill-opacity=".87" stroke="#fff0c8" stroke-width="1.5"/><ellipse cx="448.4" cy="255.2" rx="32.2" ry="23.8" fill="#e7c7a6" fill-opacity=".87" stroke="#fff0c8" stroke-width="1.5"/><ellipse cx="372.8" cy="328.0" rx="32.2" ry="23.8" fill="#e7c7a6" fill-opacity=".87" stroke="#fff0c8" stroke-width="1.5"/><ellipse cx="448.4" cy="319.6" rx="32.2" ry="23.8" fill="#e7c7a6" fill-opacity=".87" stroke="#fff0c8" stroke-width="1.5"/><circle cx="226" cy="173" r="47" fill="url(#cell)" stroke="#d6f9db" stroke-width="3" opacity=".7"/>
+<circle cx="585" cy="384" r="44" fill="url(#cell)" stroke="#d6f9db" stroke-width="3" opacity=".58"/>
+<circle cx="405" cy="279" r="165" stroke="#8defda" fill="none" stroke-opacity=".1" stroke-width="4"/>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

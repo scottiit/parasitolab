@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Iodamoeba bütschlii</title>
+<desc id="desc">Cisto com um núcleo e grande vacúolo de glicogênio Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<path d="M335 125C445 85 533 155 555 262C573 352 516 443 412 459C316 476 240 414 242 315C241 229 254 150 335 125Z" fill="url(#cell)" stroke="#e4f6d8" stroke-width="8"/>
+<path d="M312 156Q264 212 272 279" fill="none" stroke="#fbfff0" stroke-opacity=".45" stroke-width="5"/>
+<ellipse cx="417" cy="305" rx="105" ry="110" fill="url(#gly)" fill-opacity=".85" stroke="#f8e1ae" stroke-width="6"/>
+<ellipse cx="424" cy="310" rx="76" ry="83" fill="none" stroke="#8e6549" stroke-opacity=".48" stroke-width="5"/>
+<ellipse cx="329" cy="203" rx="31" ry="33" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="332" cy="204" r="12.4" fill="#81505e"/><circle cx="324" cy="198" r="4.0" fill="#fff6db" opacity=".65"/>
+<g fill="#8c6c5a" opacity=".38"><circle cx="478" cy="294" r="8"/><circle cx="356" cy="342" r="6"/></g>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Blastocystis sp.</title>
+<desc id="desc">Forma vacuolar com grande corpo central e núcleos periféricos Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<circle cx="400" cy="280" r="184" fill="url(#cell)" stroke="#d6f9db" stroke-width="7"/>
+<circle cx="400" cy="280" r="162" fill="#c7ead0" fill-opacity=".18" stroke="#c7f5dc" stroke-width="2"/>
+<circle cx="400" cy="280" r="144" fill="#0e7888" fill-opacity=".79" stroke="#a8eed9" stroke-opacity=".64" stroke-width="5"/>
+<circle cx="380" cy="257" r="95" fill="#7ad0c2" fill-opacity=".16"/>
+<ellipse cx="375" cy="233" rx="85" ry="73" fill="#c6f6dc" fill-opacity=".12"/>
+<ellipse cx="398" cy="115" rx="23" ry="25" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="401" cy="116" r="9.2" fill="#81505e"/><circle cx="393" cy="110" r="3.0" fill="#fff6db" opacity=".65"/><ellipse cx="535" cy="330" rx="23" ry="25" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="538" cy="331" r="9.2" fill="#81505e"/><circle cx="530" cy="325" r="3.0" fill="#fff6db" opacity=".65"/><ellipse cx="286" cy="377" rx="23" ry="25" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="289" cy="378" r="9.2" fill="#81505e"/><circle cx="281" cy="372" r="3.0" fill="#fff6db" opacity=".65"/>
+<path d="M325 192Q359 159 412 159" fill="none" stroke="#edffec" stroke-width="7" stroke-opacity=".24" stroke-linecap="round"/>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>

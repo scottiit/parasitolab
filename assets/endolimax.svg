@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+<title id="title">Endolimax nana</title>
+<desc id="desc">Cisto maduro pequeno com quatro núcleos Esquema didático, não é microfotografia e não está em escala.</desc>
+<defs>
+<radialGradient id="bg"><stop stop-color="#245559"/><stop offset=".76" stop-color="#103139"/><stop offset="1" stop-color="#071c26"/></radialGradient>
+<linearGradient id="cell" x1=".1" y1=".05" x2=".87" y2="1"><stop stop-color="#d5f4d3" stop-opacity=".91"/><stop offset=".5" stop-color="#8cdcc7" stop-opacity=".79"/><stop offset="1" stop-color="#3f9eab" stop-opacity=".77"/></linearGradient>
+<radialGradient id="nuc"><stop stop-color="#f8e3b9"/><stop offset=".7" stop-color="#deb38d"/><stop offset="1" stop-color="#9d7776"/></radialGradient>
+<radialGradient id="gly"><stop stop-color="#ffe9b4"/><stop offset=".68" stop-color="#b88d52"/><stop offset="1" stop-color="#8a694e"/></radialGradient>
+<filter id="halo"><feGaussianBlur stdDeviation="15"/></filter>
+<pattern id="dust" width="27" height="28" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#d3f5d2" opacity=".15"/><circle cx="21" cy="19" r="1.2" fill="#7ed3c0" opacity=".11"/></pattern>
+</defs>
+<rect width="800" height="560" fill="#08212a"/>
+<circle cx="400" cy="280" r="254" fill="url(#bg)" stroke="#4a9899" stroke-opacity=".46" stroke-width="2"/>
+<circle cx="400" cy="280" r="236" fill="url(#dust)" stroke="#9ad9c7" stroke-opacity=".15" stroke-dasharray="5 11"/>
+<ellipse cx="401" cy="283" rx="151" ry="166" fill="#9df3ce" opacity=".14" filter="url(#halo)"/>
+<path d="M399 109C500 111 560 182 567 267C576 371 495 456 400 456C300 456 226 368 236 270C243 173 299 111 399 109Z" fill="url(#cell)" stroke="#d4ffe2" stroke-width="8"/>
+<path d="M300 186Q267 242 274 304" fill="none" stroke="#eaffea" stroke-opacity=".42" stroke-width="5"/>
+<g fill="#328f9b" fill-opacity=".22"><ellipse cx="400" cy="284" rx="115" ry="125"/></g>
+<ellipse cx="336" cy="210" rx="33" ry="35" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="339" cy="211" r="13.2" fill="#81505e"/><circle cx="331" cy="205" r="4.3" fill="#fff6db" opacity=".65"/><ellipse cx="461" cy="221" rx="33" ry="35" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="464" cy="222" r="13.2" fill="#81505e"/><circle cx="456" cy="216" r="4.3" fill="#fff6db" opacity=".65"/><ellipse cx="331" cy="346" rx="33" ry="35" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="334" cy="347" r="13.2" fill="#81505e"/><circle cx="326" cy="341" r="4.3" fill="#fff6db" opacity=".65"/><ellipse cx="458" cy="355" rx="33" ry="35" fill="url(#nuc)" stroke="#ffefc7" stroke-width="2"/><circle cx="461" cy="356" r="13.2" fill="#81505e"/><circle cx="453" cy="350" r="4.3" fill="#fff6db" opacity=".65"/>
+<g fill="#2e9196" opacity=".24"><circle cx="401" cy="283" r="11"/><circle cx="381" cy="313" r="9"/><circle cx="438" cy="284" r="9"/></g>
+<g stroke="#b0eed7" stroke-opacity=".45" stroke-width="1"><path d="M150 280h41M609 280h41M400 28v38M400 494v38"/></g>
+<g fill="#a7e4cc" opacity=".63"><circle cx="198" cy="161" r="2"/><circle cx="578" cy="445" r="2"/><circle cx="570" cy="133" r="2"/><circle cx="242" cy="452" r="1.5"/></g>
+</svg>
