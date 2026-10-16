@@ -4,6 +4,7 @@
   const STORAGE_KEY = "parasitolab-equipe4-progress-v2";
   const REPORTS_KEY = "parasitolab-equipe4-reports-v1";
   const BEST_REPORT_KEY = "parasitolab-equipe4-best-report-v1";
+  const HINT_PENALTY = 25;
 
   function initialProgress() {
     return { activeIndex: 0, answers: {}, hints: {}, started: false, startedAt: null };
@@ -23,13 +24,46 @@
       ...initialProgress(),
       missionOrder: shuffled(missions.map(mission => mission.id), random),
       optionOrders: Object.fromEntries(missions.map(mission =>
-        [mission.id, shuffled(mission.options, random)]))
+        [mission.id, drawOptions(mission, random)]))
     };
   }
 
   function validOrder(value, expected) {
     return Array.isArray(value) && value.length === expected.length &&
       new Set(value).size === expected.length && value.every(item => expected.includes(item));
+  }
+
+  function optionPool(mission) {
+    return [...new Set([mission.answer, ...mission.options, ...(mission.optionPool || [])])];
+  }
+
+  function drawOptions(mission, random = Math.random) {
+    const distractors = shuffled(optionPool(mission).filter(option => option !== mission.answer), random).slice(0, 3);
+    return shuffled([mission.answer, ...distractors], random);
+  }
+
+  function validOptions(options, mission) {
+    const pool = optionPool(mission);
+    return Array.isArray(options) && options.length === 4 && new Set(options).size === 4 &&
+      options.includes(mission.answer) && options.every(option => pool.includes(option));
+  }
+
+  function normalizeAnswer(mission, answer) {
+    const normalized = { choice: answer.choice };
+    if ([0, 50, 75, 100].includes(answer.points)) {
+      normalized.points = answer.choice === mission.answer ? answer.points : 0;
+    }
+    return normalized;
+  }
+
+  function pointsForHints(mission, count = 0) {
+    const used = Number.isInteger(count) ? Math.min(Math.max(count, 0), mission.hints.length) : 0;
+    return Math.max(0, 100 - used * HINT_PENALTY);
+  }
+
+  function answerPoints(mission, answer) {
+    if (!answer || answer.choice !== mission.answer) return 0;
+    return [0, 50, 75, 100].includes(answer.points) ? answer.points : 100;
   }
 
   function safeLoadProgress(storage, missions) {
@@ -46,7 +80,11 @@
         ? [...decoded.missionOrder] : fallbackIds;
       const optionOrders = Object.fromEntries(missions.map(mission => {
         const options = decoded.optionOrders && decoded.optionOrders[mission.id];
-        return [mission.id, validOrder(options, mission.options) ? [...options] : [...mission.options]];
+        if (validOptions(options, mission)) return [mission.id, [...options]];
+        const prior = Array.isArray(options) ? [...new Set(options)].filter(option => optionPool(mission).includes(option)) : [];
+        const migrated = prior.includes(mission.answer) && prior.length === 3
+          ? [...prior, shuffled(optionPool(mission).filter(option => !prior.includes(option)))[0]] : drawOptions(mission);
+        return [mission.id, migrated];
       }));
       const answers = {};
       const hints = {};
@@ -55,9 +93,9 @@
         if (
           answer &&
           typeof answer.choice === "string" &&
-          mission.options.includes(answer.choice)
+          optionPool(mission).includes(answer.choice)
         ) {
-          answers[mission.id] = { choice: answer.choice };
+          answers[mission.id] = normalizeAnswer(mission, answer);
         }
         const count = decoded.hints && decoded.hints[mission.id];
         if (Number.isInteger(count) && count >= 0) {
@@ -111,7 +149,7 @@
       total,
       answered,
       correct,
-      points: correct * 100,
+      points: missions.reduce((points, mission) => points + answerPoints(mission, answers[mission.id]), 0),
       maxPoints: total * 100,
       percentage: total ? Math.round((correct / total) * 100) : 0,
       finished: answered === total && total > 0
@@ -137,7 +175,7 @@
         const answers = {};
         for (const mission of missions) {
           const choice = entry.answers && entry.answers[mission.id] && entry.answers[mission.id].choice;
-          if (mission.options.includes(choice)) answers[mission.id] = { choice };
+          if (optionPool(mission).includes(choice)) answers[mission.id] = normalizeAnswer(mission, entry.answers[mission.id]);
         }
         const allIds = missions.map(mission => mission.id);
         const legacyIds = allIds.slice(0, 10);
@@ -192,8 +230,13 @@
     STORAGE_KEY,
     REPORTS_KEY,
     BEST_REPORT_KEY,
+    HINT_PENALTY,
     initialProgress,
     newGameProgress,
+    drawOptions,
+    optionPool,
+    pointsForHints,
+    answerPoints,
     safeLoadProgress,
     safeSaveProgress,
     safeClearProgress,

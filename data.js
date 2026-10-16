@@ -397,7 +397,8 @@
       "options": [
         "Entamoeba histolytica",
         "Entamoeba coli",
-        "Endolimax nana"
+        "Endolimax nana",
+        "Iodamoeba bütschlii"
       ],
       "answer": "Entamoeba histolytica",
       "stage": "Trofozoíto",
@@ -410,7 +411,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/amebiasis/",
       "organismId": "entamoeba-histolytica",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Giardia duodenalis",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-02",
@@ -425,7 +438,8 @@
       "options": [
         "Endolimax nana",
         "Entamoeba coli",
-        "Iodamoeba bütschlii"
+        "Iodamoeba bütschlii",
+        "Entamoeba histolytica"
       ],
       "answer": "Entamoeba coli",
       "stage": "Cisto maduro",
@@ -439,7 +453,19 @@
       "organismId": "entamoeba-coli",
       "imageType": "microphotograph",
       "imageCredit": "Material de imagens fornecido pela Equipe 4",
-      "imageClipBottom": 10
+      "imageClipBottom": 10,
+      "optionPool": [
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Entamoeba histolytica",
+        "Giardia duodenalis",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-03",
@@ -454,7 +480,8 @@
       "options": [
         "Iodamoeba bütschlii",
         "Entamoeba coli",
-        "Endolimax nana"
+        "Endolimax nana",
+        "Entamoeba histolytica"
       ],
       "answer": "Endolimax nana",
       "stage": "Cisto maduro",
@@ -468,7 +495,19 @@
       "organismId": "endolimax-nana",
       "imageType": "microphotograph",
       "imageCredit": "Material de imagens fornecido pela Equipe 4",
-      "imageClipBottom": 11
+      "imageClipBottom": 11,
+      "optionPool": [
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Entamoeba coli",
+        "Entamoeba histolytica",
+        "Giardia duodenalis",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-04",
@@ -483,7 +522,8 @@
       "options": [
         "Iodamoeba bütschlii",
         "Endolimax nana",
-        "Entamoeba coli"
+        "Entamoeba coli",
+        "Entamoeba histolytica"
       ],
       "answer": "Iodamoeba bütschlii",
       "stage": "Trofozoíto",
@@ -496,7 +536,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/intestinalamebae/",
       "organismId": "iodamoeba-butschlii",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Iodamoeba bütschlii",
+        "Endolimax nana",
+        "Entamoeba coli",
+        "Entamoeba histolytica",
+        "Giardia duodenalis",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-05",
@@ -511,7 +563,8 @@
       "options": [
         "Trichomonas vaginalis",
         "Giardia duodenalis",
-        "Balantioides coli"
+        "Balantioides coli",
+        "Entamoeba histolytica"
       ],
       "answer": "Giardia duodenalis",
       "stage": "Trofozoíto",
@@ -524,7 +577,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/giardiasis/",
       "organismId": "giardia-duodenalis",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Giardia duodenalis",
+        "Trichomonas vaginalis",
+        "Balantioides coli",
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli"
+      ]
     },
     {
       "id": "missao-06",
@@ -539,7 +604,8 @@
       "options": [
         "Cryptosporidium parvum / hominis",
         "Blastocystis hominis",
-        "Cystoisospora belli"
+        "Cystoisospora belli",
+        "Entamoeba histolytica"
       ],
       "answer": "Blastocystis hominis",
       "stage": "Forma vacuolar",
@@ -552,7 +618,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/blastocystis/",
       "organismId": "blastocystis-hominis",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Giardia duodenalis",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-07",
@@ -567,7 +645,8 @@
       "options": [
         "Cystoisospora belli",
         "Giardia duodenalis",
-        "Cryptosporidium parvum / hominis"
+        "Cryptosporidium parvum / hominis",
+        "Entamoeba histolytica"
       ],
       "answer": "Cryptosporidium parvum / hominis",
       "stage": "Oocisto",
@@ -580,7 +659,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/cryptosporidiosis/",
       "organismId": "cryptosporidium",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli",
+        "Giardia duodenalis",
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Blastocystis hominis",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-08",
@@ -595,7 +686,8 @@
       "options": [
         "Cryptosporidium parvum / hominis",
         "Cystoisospora belli",
-        "Blastocystis hominis"
+        "Blastocystis hominis",
+        "Entamoeba histolytica"
       ],
       "answer": "Cystoisospora belli",
       "stage": "Oocisto imaturo",
@@ -608,7 +700,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/cystoisosporiasis/",
       "organismId": "cystoisospora-belli",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Cystoisospora belli",
+        "Cryptosporidium parvum / hominis",
+        "Blastocystis hominis",
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Giardia duodenalis",
+        "Balantioides coli",
+        "Trichomonas vaginalis"
+      ]
     },
     {
       "id": "missao-09",
@@ -623,7 +727,8 @@
       "options": [
         "Balantioides coli",
         "Entamoeba histolytica",
-        "Trichomonas vaginalis"
+        "Trichomonas vaginalis",
+        "Entamoeba coli"
       ],
       "answer": "Balantioides coli",
       "stage": "Trofozoíto",
@@ -636,7 +741,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/balantidiasis/",
       "organismId": "balantioides-coli",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Balantioides coli",
+        "Entamoeba histolytica",
+        "Trichomonas vaginalis",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Giardia duodenalis",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli"
+      ]
     },
     {
       "id": "missao-10",
@@ -651,7 +768,8 @@
       "options": [
         "Giardia duodenalis",
         "Balantioides coli",
-        "Trichomonas vaginalis"
+        "Trichomonas vaginalis",
+        "Entamoeba histolytica"
       ],
       "answer": "Trichomonas vaginalis",
       "stage": "Trofozoíto",
@@ -664,7 +782,19 @@
       "sourceUrl": "https://www.cdc.gov/dpdx/trichomoniasis/",
       "organismId": "trichomonas-vaginalis",
       "imageType": "microphotograph",
-      "imageCredit": "Material de imagens fornecido pela Equipe 4"
+      "imageCredit": "Material de imagens fornecido pela Equipe 4",
+      "optionPool": [
+        "Trichomonas vaginalis",
+        "Giardia duodenalis",
+        "Balantioides coli",
+        "Entamoeba histolytica",
+        "Entamoeba coli",
+        "Endolimax nana",
+        "Iodamoeba bütschlii",
+        "Blastocystis hominis",
+        "Cryptosporidium parvum / hominis",
+        "Cystoisospora belli"
+      ]
     },
     {
       "title": "A forma protegida",
@@ -672,7 +802,8 @@
       "options": [
         "Cisto",
         "Trofozoíto",
-        "Oocisto"
+        "Oocisto",
+        "Esporozoíto"
       ],
       "answer": "Cisto",
       "scenario": "A fotografia do material de estudo mostra uma estrutura delimitada por parede, atribuída ao complexo E. histolytica/E. dispar. Compare a forma com o estágio ameboide estudado em outro caso.",
@@ -694,7 +825,14 @@
       "hideStage": true,
       "sourceName": "CDC DPDx — Amebíase",
       "sourceUrl": "https://www.cdc.gov/dpdx/amebiasis/",
-      "imageClipBottom": 12
+      "imageClipBottom": 12,
+      "optionPool": [
+        "Cisto",
+        "Trofozoíto",
+        "Oocisto",
+        "Esporozoíto",
+        "Merozoíto"
+      ]
     },
     {
       "title": "Uma ameba fora do cisto",
@@ -702,7 +840,8 @@
       "options": [
         "Entamoeba coli — trofozoíto",
         "Entamoeba coli — cisto",
-        "Endolimax nana — cisto"
+        "Endolimax nana — cisto",
+        "Entamoeba histolytica — trofozoíto"
       ],
       "answer": "Entamoeba coli — trofozoíto",
       "scenario": "Considere uma ameba intestinal com um único núcleo, carossomo geralmente excêntrico e cromatina periférica grosseira. O material da equipe registra a forma celular ativa para esta investigação.",
@@ -723,7 +862,24 @@
       "stage": "Trofozoíto",
       "hideStage": true,
       "sourceName": "CDC DPDx — Amebas intestinais",
-      "sourceUrl": "https://www.cdc.gov/dpdx/intestinalamebae/"
+      "sourceUrl": "https://www.cdc.gov/dpdx/intestinalamebae/",
+      "optionPool": [
+        "Entamoeba coli — trofozoíto",
+        "Entamoeba coli — cisto",
+        "Endolimax nana — cisto",
+        "Entamoeba histolytica — trofozoíto",
+        "Entamoeba histolytica — cisto",
+        "Entamoeba coli — cisto maduro",
+        "Endolimax nana — cisto maduro",
+        "Endolimax nana — trofozoíto",
+        "Iodamoeba bütschlii — trofozoíto",
+        "Giardia duodenalis — trofozoíto",
+        "Blastocystis hominis — forma vacuolar",
+        "Cryptosporidium parvum / hominis — oocisto",
+        "Cystoisospora belli — oocisto imaturo",
+        "Balantioides coli — trofozoíto",
+        "Trichomonas vaginalis — trofozoíto"
+      ]
     },
     {
       "title": "O carossomo irregular",
@@ -731,7 +887,8 @@
       "options": [
         "Endolimax nana — trofozoíto",
         "Endolimax nana — cisto",
-        "Entamoeba histolytica — cisto"
+        "Entamoeba histolytica — cisto",
+        "Entamoeba histolytica — trofozoíto"
       ],
       "answer": "Endolimax nana — trofozoíto",
       "scenario": "O registro da equipe apresenta uma pequena ameba. Considere um único núcleo, carossomo grande e irregular e ausência de cromatina periférica, em vez da organização nuclear de um cisto maduro.",
@@ -752,7 +909,23 @@
       "stage": "Trofozoíto",
       "hideStage": true,
       "sourceName": "CDC DPDx — Amebas intestinais",
-      "sourceUrl": "https://www.cdc.gov/dpdx/intestinalamebae/"
+      "sourceUrl": "https://www.cdc.gov/dpdx/intestinalamebae/",
+      "optionPool": [
+        "Endolimax nana — trofozoíto",
+        "Endolimax nana — cisto",
+        "Entamoeba histolytica — cisto",
+        "Entamoeba histolytica — trofozoíto",
+        "Entamoeba coli — cisto maduro",
+        "Entamoeba coli — trofozoíto",
+        "Endolimax nana — cisto maduro",
+        "Iodamoeba bütschlii — trofozoíto",
+        "Giardia duodenalis — trofozoíto",
+        "Blastocystis hominis — forma vacuolar",
+        "Cryptosporidium parvum / hominis — oocisto",
+        "Cystoisospora belli — oocisto imaturo",
+        "Balantioides coli — trofozoíto",
+        "Trichomonas vaginalis — trofozoíto"
+      ]
     },
     {
       "title": "A ameba no tecido",
@@ -760,7 +933,8 @@
       "options": [
         "Biópsia retal",
         "Esfregaço vaginal",
-        "Amostra urinária"
+        "Amostra urinária",
+        "Aspirado hepático"
       ],
       "answer": "Biópsia retal",
       "scenario": "Esta imagem foi apresentada pela equipe como corte histológico corado por hematoxilina e eosina, com trofozoítos de E. histolytica indicados por setas em tecido intestinal. Identifique o contexto da coleta.",
@@ -781,7 +955,14 @@
       "stage": "Trofozoíto em tecido",
       "hideStage": false,
       "sourceName": "CDC DPDx — Amebíase",
-      "sourceUrl": "https://www.cdc.gov/dpdx/amebiasis/"
+      "sourceUrl": "https://www.cdc.gov/dpdx/amebiasis/",
+      "optionPool": [
+        "Biópsia retal",
+        "Esfregaço vaginal",
+        "Amostra urinária",
+        "Aspirado hepático",
+        "Raspado cutâneo"
+      ]
     },
     {
       "title": "O contexto da citologia",
@@ -789,7 +970,8 @@
       "options": [
         "Trato urogenital",
         "Intestino grosso",
-        "Fígado"
+        "Fígado",
+        "Intestino delgado"
       ],
       "answer": "Trato urogenital",
       "scenario": "O documento apresenta uma colpocitologia com estruturas atribuídas a Trichomonas vaginalis indicadas por setas. Relacione o contexto da amostra ao local habitual desse organismo no hospedeiro.",
@@ -810,7 +992,14 @@
       "stage": "Trofozoíto em citologia",
       "hideStage": false,
       "sourceName": "CDC DPDx — Tricomoníase",
-      "sourceUrl": "https://www.cdc.gov/dpdx/trichomoniasis/"
+      "sourceUrl": "https://www.cdc.gov/dpdx/trichomoniasis/",
+      "optionPool": [
+        "Trato urogenital",
+        "Intestino grosso",
+        "Fígado",
+        "Intestino delgado",
+        "Pulmões"
+      ]
     }
   ]
 };

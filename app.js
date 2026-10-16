@@ -30,7 +30,7 @@
     lastFocused: null
   };
 
-  const letters = ["A", "B", "C"];
+  const letters = ["A", "B", "C", "D"];
   const escapeHtml = (value) => String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -59,7 +59,7 @@
     state.selectedReportId = state.progress.reportId;
     if (availableReports().some((report) => report.id === state.progress.reportId)) return;
     const answers = Object.fromEntries(orderedMissions().map((mission) =>
-      [mission.id, { choice: state.progress.answers[mission.id].choice }]));
+      [mission.id, { ...state.progress.answers[mission.id] }]));
     const durationMs = state.progress.startedAt === null ? null : Math.max(0, Date.now() - state.progress.startedAt);
     state.reports = [{ id: state.progress.reportId, durationMs, answers, missionIds: orderedMissions().map(mission => mission.id) },
       ...state.reports].slice(0, 10);
@@ -183,7 +183,7 @@
       </div>
       <section class="process-grid" aria-label="Etapas do jogo">
         <article class="process-card"><span class="process-number">PASSO 01</span><h3>Estude as referências</h3><p>Consulte a colinha antes de iniciar. Ela fica bloqueada durante a investigação e volta a ficar disponível ao concluir.</p></article>
-        <article class="process-card"><span class="process-number">PASSO 02</span><h3>Analise as evidências</h3><p>Leia o caso, observe a microfotografia e use até duas pistas sem perder pontos.</p></article>
+        <article class="process-card"><span class="process-number">PASSO 02</span><h3>Analise as evidências</h3><p>Leia o caso e observe a microfotografia. Cada pista reduz em 25 pontos o valor do acerto naquela questão.</p></article>
         <article class="process-card"><span class="process-number">PASSO 03</span><h3>Entregue seu relatório</h3><p>Escolha uma alternativa, receba uma explicação e revise o resultado.</p></article>
       </section>
       <div class="notice"><strong>Nota científica:</strong> o quiz e a colinha usam microfotografias fornecidas pela Equipe 4. A ilustração da página inicial é um mascote. As imagens são usadas para estudo; os casos têm como referência o CDC DPDx e não substituem diagnóstico laboratorial.
@@ -276,6 +276,8 @@
     const selection = answered ? state.progress.answers[mission.id].choice : null;
     const correct = selection === mission.answer;
     const usedHints = state.progress.hints[mission.id] || 0;
+    const missionPoints = answered ? logic.answerPoints(mission, state.progress.answers[mission.id])
+      : logic.pointsForHints(mission, usedHints);
     const displayedHints = mission.hints.slice(0, usedHints)
       .map((hint, index) => `<li><strong>Pista ${index + 1}:</strong> ${escapeHtml(hint)}</li>`).join("");
     const options = currentOptions(mission).map((option, index) => {
@@ -293,7 +295,7 @@
       feedback = `
         <section class="answer-feedback ${correct ? "" : "incorrect"}" id="answer-feedback" tabindex="-1" aria-live="polite">
           <h3>${correct ? "✓ Identificação correta!" : "✦ Caso investigado!"}</h3>
-          <p>${correct ? "Você somou 100 pontos nesta missão. " : `A resposta correta era ${escapeHtml(mission.answer)}. `}
+          <p>${correct ? `Você somou ${missionPoints} pontos nesta missão. ` : `A resposta correta era ${escapeHtml(mission.answer)}. `}
             ${escapeHtml(mission.explanation)}</p>
           <a class="card-source" href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">Consultar a fonte: ${escapeHtml(mission.sourceName)} ↗</a>
           <button class="btn btn-primary btn-block" type="button" data-action="next">${more ? "Ver relatório final →" : "Próxima missão →"}</button>
@@ -327,14 +329,14 @@
             </div>
           </article>
           <article class="investigation-panel">
-            <div class="panel-head"><span>ANÁLISE DA AMOSTRA</span><strong>03 ALTERNATIVAS</strong></div>
+            <div class="panel-head"><span>ANÁLISE DA AMOSTRA</span><strong>04 ALTERNATIVAS</strong></div>
             <div class="investigation-body">
               <span class="specimen-meta">INVESTIGAÇÃO MORFOLÓGICA</span>
               <h2>${escapeHtml(mission.question)}</h2>
               <div class="hint-panel">
                 <div class="hint-row">
-                  <div><div class="hint-title">✧ Pistas do investigador</div><p class="hint-caption">Sem penalidade de pontos</p></div>
-                  <button class="hint-button" type="button" data-action="hint" ${usedHints >= mission.hints.length || answered ? "disabled" : ""}>${usedHints >= mission.hints.length ? "Todas abertas" : "Abrir pista " + (usedHints + 1)}</button>
+                  <div><div class="hint-title">✧ Pistas do investigador</div><p class="hint-caption">${answered ? `Pontos nesta questão: ${missionPoints}` : `Valor do acerto: ${missionPoints} pontos · −25 por pista`}</p></div>
+                  <button class="hint-button" type="button" data-action="hint" ${usedHints >= mission.hints.length || answered ? "disabled" : ""}>${usedHints >= mission.hints.length ? "Todas abertas" : `Abrir pista ${usedHints + 1} (−25)`}</button>
                 </div>
                 ${usedHints ? `<ol class="hints-list">${displayedHints}</ol>` : ""}
               </div>
@@ -345,7 +347,7 @@
         </div>
         <div class="mission-utility">
           <p>A colinha estará disponível ao concluir a investigação.</p>
-          <p>Sem cronômetro • Sem penalidade por pistas • Resposta única por caso</p>
+          <p>Acerto: 100 pontos sem pistas, 75 com uma, 50 com duas • Erro: 0 pontos</p>
         </div>
       </section>`;
   }
@@ -389,7 +391,7 @@
       return `
         <article class="review-card">
           <div class="review-heading"><h3>${escapeHtml(mission.number)} — ${escapeHtml(mission.title)}</h3>
-          <span class="tag ${isCorrect ? "" : "tag-warning"}">${isCorrect ? "Acertou · +100" : "Revisar · +0"}</span></div>
+          <span class="tag ${isCorrect ? "" : "tag-warning"}">${isCorrect ? `Acertou · +${logic.answerPoints(mission, report.answers[mission.id])}` : "Revisar · +0"}</span></div>
           <p><strong>Sua resposta:</strong> ${escapeHtml(selected)}<br><strong>Resposta correta:</strong> ${escapeHtml(mission.answer)}</p>
           <p>${escapeHtml(mission.explanation)}</p>
           <a href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(mission.sourceName)} ↗</a>
@@ -444,7 +446,7 @@
     render(false);
     const hintButton = main.querySelector('[data-action="hint"]');
     if (hintButton && !hintButton.disabled) hintButton.focus();
-    announce(`Pista ${count + 1}: ${mission.hints[count]}`);
+    announce(`Pista ${count + 1}: ${mission.hints[count]} Valor do acerto: ${logic.pointsForHints(mission, count + 1)} pontos.`);
   }
 
   function submitAnswer(choiceIndex) {
@@ -452,13 +454,14 @@
     const options = currentOptions(mission);
     if (!Number.isInteger(choiceIndex) || choiceIndex < 0 || choiceIndex >= options.length || hasAnswer(mission)) return;
     const choice = options[choiceIndex];
-    state.progress.answers[mission.id] = { choice };
+    state.progress.answers[mission.id] = { choice, points: choice === mission.answer
+      ? logic.pointsForHints(mission, state.progress.hints[mission.id] || 0) : 0 };
     persist();
     rememberCompletedReport();
     render(false);
     const feedback = document.getElementById("answer-feedback");
     if (feedback) feedback.focus({ preventScroll: true });
-    announce(choice === mission.answer ? "Resposta correta. Você ganhou 100 pontos." : `Resposta registrada. A correta é ${mission.answer}.`);
+    announce(choice === mission.answer ? `Resposta correta. Você ganhou ${logic.answerPoints(mission, state.progress.answers[mission.id])} pontos.` : `Resposta registrada. A correta é ${mission.answer}.`);
   }
 
   function nextMission() {

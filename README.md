@@ -9,9 +9,9 @@ Estudar dez organismos em quinze casos didáticos com microfotografias, observan
 ## Como jogar
 
 1. Consulte a **Colinha** antes de iniciar: cada ficha apresenta o organismo, seu estágio, características, diferenças e um botão para a referência CDC DPDx.
-2. Inicie a investigação. As quinze questões e as três alternativas de cada questão são embaralhadas a cada nova partida. A colinha fica bloqueada durante o quiz.
-3. Observe a microfotografia, amplie a imagem e abra até duas pistas, sem perder pontos.
-4. Escolha uma alternativa e confira a explicação. Cada acerto vale **100 pontos**, até **1.500 pontos** por nova partida.
+2. Inicie a investigação. As quinze questões são embaralhadas. Cada questão sorteia **quatro alternativas** de um conjunto de opções, sempre incluindo a correta. O sorteio e a ordem são mantidos ao recarregar. A colinha fica bloqueada durante o quiz.
+3. Observe a microfotografia e amplie a imagem. Há até duas pistas; cada uma reduz em **25 pontos** o valor do acerto naquela questão.
+4. Escolha uma alternativa e confira a explicação. Um acerto vale **100 pontos sem pistas**, **75 com uma pista** ou **50 com duas**. Um erro vale **0**. O máximo por nova partida é **1.500 pontos**.
 5. Ao concluir, revise o relatório ou jogue novamente. A colinha volta a ficar disponível.
 
 ## Organismos e estágios representados
@@ -38,6 +38,8 @@ As fichas também apresentam o cisto de *E. histolytica/E. dispar*, os trofozoí
 O progresso fica salvo no navegador, incluindo a ordem das questões e alternativas. É possível continuar a investigação após recarregar a página.
 
 Partidas antigas de dez questões podem ser concluídas com o total original; seus relatórios e pontuações são preservados. Uma nova partida passa a usar as quinze questões.
+
+Respostas e relatórios anteriores à penalização das pistas mantêm os pontos já obtidos. A nova regra vale para respostas registradas a partir da atualização. Alternativas antigas são completadas para quatro, preservando a resposta correta e as escolhas já feitas.
 
 O histórico mantém os **últimos dez relatórios** e preserva a **melhor partida**, mesmo quando ela sai dessa lista. A melhor é a de maior pontuação; em empate, vence o menor tempo de conclusão.
 
