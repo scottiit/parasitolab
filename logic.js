@@ -5,6 +5,7 @@
   const REPORTS_KEY = "parasitolab-equipe4-reports-v1";
   const BEST_REPORT_KEY = "parasitolab-equipe4-best-report-v1";
   const HINT_PENALTY = 25;
+  const QUESTIONS_PER_GAME = 10;
 
   function initialProgress() {
     return { activeIndex: 0, answers: {}, hints: {}, started: false, startedAt: null };
@@ -20,17 +21,19 @@
   }
 
   function newGameProgress(missions, random = Math.random) {
+    const selected = shuffled(missions, random).slice(0, QUESTIONS_PER_GAME);
     return {
       ...initialProgress(),
-      missionOrder: shuffled(missions.map(mission => mission.id), random),
-      optionOrders: Object.fromEntries(missions.map(mission =>
+      missionOrder: selected.map(mission => mission.id),
+      optionOrders: Object.fromEntries(selected.map(mission =>
         [mission.id, drawOptions(mission, random)]))
     };
   }
 
-  function validOrder(value, expected) {
-    return Array.isArray(value) && value.length === expected.length &&
-      new Set(value).size === expected.length && value.every(item => expected.includes(item));
+  function validMissionSelection(value, catalogIds) {
+    return Array.isArray(value) &&
+      (value.length === Math.min(QUESTIONS_PER_GAME, catalogIds.length) || value.length === catalogIds.length) &&
+      new Set(value).size === value.length && value.every(id => catalogIds.includes(id));
   }
 
   function optionPool(mission) {
@@ -76,9 +79,10 @@
       const legacyIds = ids.slice(0, 10);
       const fallbackIds = ids.some(id => !legacyIds.includes(id) && decoded.answers && Object.hasOwn(decoded.answers, id))
         ? ids : legacyIds;
-      const missionOrder = validOrder(decoded.missionOrder, ids) || validOrder(decoded.missionOrder, legacyIds)
+      const missionOrder = validMissionSelection(decoded.missionOrder, ids)
         ? [...decoded.missionOrder] : fallbackIds;
-      const optionOrders = Object.fromEntries(missions.map(mission => {
+      const gameMissions = missions.filter(mission => missionOrder.includes(mission.id));
+      const optionOrders = Object.fromEntries(gameMissions.map(mission => {
         const options = decoded.optionOrders && decoded.optionOrders[mission.id];
         if (validOptions(options, mission)) return [mission.id, [...options]];
         const prior = Array.isArray(options) ? [...new Set(options)].filter(option => optionPool(mission).includes(option)) : [];
@@ -88,7 +92,7 @@
       }));
       const answers = {};
       const hints = {};
-      for (const mission of missions) {
+      for (const mission of gameMissions) {
         const answer = decoded.answers && decoded.answers[mission.id];
         if (
           answer &&
@@ -180,7 +184,7 @@
         const allIds = missions.map(mission => mission.id);
         const legacyIds = allIds.slice(0, 10);
         let missionIds;
-        if (validOrder(entry.missionIds, allIds) || validOrder(entry.missionIds, legacyIds)) missionIds = [...entry.missionIds];
+        if (validMissionSelection(entry.missionIds, allIds)) missionIds = [...entry.missionIds];
         else if (entry.missionIds !== undefined) continue;
         else missionIds = calculateScore(missions, answers).finished ? allIds : legacyIds;
         const reportMissions = missions.filter(mission => missionIds.includes(mission.id));
@@ -231,6 +235,7 @@
     REPORTS_KEY,
     BEST_REPORT_KEY,
     HINT_PENALTY,
+    QUESTIONS_PER_GAME,
     initialProgress,
     newGameProgress,
     drawOptions,

@@ -171,7 +171,7 @@
             ${hasProgress && !progressScore.finished ? `<button class="btn btn-ghost" type="button" data-action="abandon" aria-describedby="abandon-note">Desistir da investigação</button>` : ""}
           </div>
           ${hasProgress && !progressScore.finished ? `<p class="hero-footnote" id="abandon-note">Desistir apaga o progresso da partida atual. Seus relatórios anteriores são mantidos.</p>` : ""}
-          <div class="hero-footnote"><span class="spark" aria-hidden="true"></span> ${data.missions.length} missões completas disponíveis · Sem cadastro · Gratuito</div>
+          <div class="hero-footnote"><span class="spark" aria-hidden="true"></span> ${logic.QUESTIONS_PER_GAME} perguntas por investigação · ${data.missions.length} no catálogo · Sem cadastro · Gratuito</div>
         </div>
         <div class="hero-visual" aria-label="Ilustração conceitual de uma investigação em laboratório">
           <div class="visual-top"><span class="micro-label">AMOSTRA EM ANÁLISE</span><span class="visual-pill">● SINAL ATIVO</span></div>
