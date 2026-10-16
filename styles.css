@@ -194,7 +194,6 @@ h3 { font-size: 19px; }
 .guide-photo figcaption strong { color: var(--mint); }
 .guide-photo figcaption p { margin: 5px 0; color: var(--muted); }
 .guide-photo ul { padding-left: 18px; color: var(--muted); font-size: 12px; }
-.photo-credit { color: var(--muted-2); font-size: 10px; margin: 12px 0 0; }
 .specimen-view img.microphoto-image, .modal-dialog img.microphoto-image {
   display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; padding: 0;
   clip-path: inset(0 0 var(--clip-bottom, 0%) 0);

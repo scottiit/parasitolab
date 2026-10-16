@@ -217,7 +217,6 @@
         </div>
         <div class="stage-gallery">${gallery}</div>
         <div class="card-difference"><strong>Para diferenciar:</strong> ${escapeHtml(organism.difference)}${organism.note ? `<p class="organism-note"><strong>Atenção:</strong> ${escapeHtml(organism.note)}</p>` : ""}</div>
-        <p class="photo-credit">${escapeHtml(organism.imageCredit)}. Créditos presentes nas imagens foram preservados.</p>
       </article>`;
   }
 
