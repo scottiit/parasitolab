@@ -38,7 +38,7 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 
-  const score = () => logic.calculateScore(data.missions, state.progress.answers);
+  const score = () => logic.calculateScore(orderedMissions(), state.progress.answers);
   const orderedMissions = () => state.progress.missionOrder
     ? state.progress.missionOrder.map(id => data.missions.find(mission => mission.id === id))
     : data.missions;
@@ -58,10 +58,10 @@
     }
     state.selectedReportId = state.progress.reportId;
     if (availableReports().some((report) => report.id === state.progress.reportId)) return;
-    const answers = Object.fromEntries(data.missions.map((mission) =>
+    const answers = Object.fromEntries(orderedMissions().map((mission) =>
       [mission.id, { choice: state.progress.answers[mission.id].choice }]));
     const durationMs = state.progress.startedAt === null ? null : Math.max(0, Date.now() - state.progress.startedAt);
-    state.reports = [{ id: state.progress.reportId, durationMs, answers },
+    state.reports = [{ id: state.progress.reportId, durationMs, answers, missionIds: orderedMissions().map(mission => mission.id) },
       ...state.reports].slice(0, 10);
     state.bestReport = logic.bestReport(data.missions, state.reports, state.bestReport);
     const bestSaved = logic.safeSaveBestReport(storage, state.bestReport);
@@ -183,10 +183,10 @@
       </div>
       <section class="process-grid" aria-label="Etapas do jogo">
         <article class="process-card"><span class="process-number">PASSO 01</span><h3>Estude as referências</h3><p>Consulte a colinha antes de iniciar. Ela fica bloqueada durante a investigação e volta a ficar disponível ao concluir.</p></article>
-        <article class="process-card"><span class="process-number">PASSO 02</span><h3>Analise as evidências</h3><p>Leia o caso, explore o esquema e use até duas pistas sem perder pontos.</p></article>
+        <article class="process-card"><span class="process-number">PASSO 02</span><h3>Analise as evidências</h3><p>Leia o caso, observe a microfotografia e use até duas pistas sem perder pontos.</p></article>
         <article class="process-card"><span class="process-number">PASSO 03</span><h3>Entregue seu relatório</h3><p>Escolha uma alternativa, receba uma explicação e revise o resultado.</p></article>
       </section>
-      <div class="notice"><strong>Nota científica:</strong> as imagens são esquemas didáticos, não microfotografias nem material diagnóstico. Os casos e as fichas têm como referência o CDC DPDx. A identificação real requer métodos e materiais validados.
+      <div class="notice"><strong>Nota científica:</strong> o quiz e a colinha usam microfotografias fornecidas pela Equipe 4. A ilustração da página inicial é um mascote. As imagens são usadas para estudo; os casos têm como referência o CDC DPDx e não substituem diagnóstico laboratorial.
         <p class="site-credit"><strong>Desenvolvimento:</strong> ${renderCredits()}</p>
       </div>
     `;
@@ -203,20 +203,26 @@
   }
 
   function verifiedCard(organism) {
-    const featureItems = organism.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("");
+    const gallery = organism.stages.map((entry) => `
+      <figure class="guide-photo">
+        <img src="${escapeHtml(entry.image)}" alt="Microfotografia de ${escapeHtml(organism.name)}: ${escapeHtml(entry.stage)}" loading="lazy">
+        <figcaption><strong>${escapeHtml(entry.stage)}</strong><p>${escapeHtml(entry.caption)}</p></figcaption>
+        <ul>${entry.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}</ul>
+      </figure>`).join("");
     return `
       <article class="organism-card verified" aria-label="Ficha de ${escapeHtml(organism.name)}">
         <div class="organism-top">
-          <h3>${escapeHtml(organism.name)}<small>Forma representada: ${escapeHtml(organism.stage)}</small></h3>
+          <h3>${escapeHtml(organism.name)}<small>Estágios e contextos no material da equipe</small></h3>
           <a class="tag cdc-reference" href="${escapeHtml(organism.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Referência CDC de ${escapeHtml(organism.name)} (abre em nova aba)">Referência CDC ↗</a>
         </div>
-        <div class="organism-body">
-          <div class="organism-thumbnail"><img src="${organism.image}" alt="Esquema didático, não microfotografia, de ${escapeHtml(organism.name)}" loading="lazy"></div>
-          <div class="organism-info"><ul>${featureItems}</ul></div>
-        </div>
-        <div class="card-difference"><strong>Para diferenciar:</strong> ${escapeHtml(organism.difference)}${organism.note ? `<p class="organism-note"><strong>Atenção:</strong> ${escapeHtml(organism.note)}</p>` : ""}
-        </div>
+        <div class="stage-gallery">${gallery}</div>
+        <div class="card-difference"><strong>Para diferenciar:</strong> ${escapeHtml(organism.difference)}${organism.note ? `<p class="organism-note"><strong>Atenção:</strong> ${escapeHtml(organism.note)}</p>` : ""}</div>
+        <p class="photo-credit">${escapeHtml(organism.imageCredit)}. Créditos presentes nas imagens foram preservados.</p>
       </article>`;
+  }
+
+  function missionPhoto(mission) {
+    return `<img class="microphoto-image" style="--clip-bottom:${Number(mission.imageClipBottom) || 0}%" src="${escapeHtml(mission.image)}" alt="${escapeHtml(mission.alt)}">`;
   }
 
   function unverifiedCard(organism) {
@@ -234,7 +240,7 @@
     const normalize = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
     const needle = normalize(state.search.trim());
     const matches = data.organisms.filter((organism) =>
-      normalize(`${organism.name} ${organism.note || ""} ${organism.stage}`).includes(needle)
+      normalize(`${organism.name} ${organism.note || ""} ${organism.stages.map(entry => entry.stage).join(" ")}`).includes(needle)
     );
     if (!matches.length) return `<div class="empty-result" role="status">Nenhum organismo encontrado para essa busca.</div>`;
     return matches.map((organism) => organism.verified ? verifiedCard(organism) : unverifiedCard(organism)).join("");
@@ -247,7 +253,7 @@
       <section aria-labelledby="guide-title">
         <div class="page-heading">
           <div><span class="eyebrow">ARQUIVO DO INVESTIGADOR</span><h1 id="guide-title">Colinha <span class="text-mint">de campo.</span></h1>
-          <p>Consulte o catálogo da Equipe 4 antes de iniciar ou após concluir a investigação. Todos os dez organismos têm fichas e missões. As ilustrações são esquemas didáticos, não lâminas reais.</p></div>
+          <p>Consulte o catálogo da Equipe 4 antes de iniciar ou após concluir a investigação. Os dez organismos têm fichas com microfotografias e os estágios e contextos presentes no material da equipe.</p></div>
           <button class="btn btn-ghost" type="button" data-action="guide-back">← ${backText}</button>
         </div>
         <div class="guide-toolbar">
@@ -257,7 +263,7 @@
         </div>
         <div class="organism-grid" id="organism-grid">${renderGuideCards()}</div>
         <div class="notice"><strong>Nota científica:</strong> cada missão usa o estágio explicitado na ficha, que pode ser trofozoíto, cisto, oocisto ou forma vacuolar. Para confirmação da espécie de E. histolytica e de Cryptosporidium, a morfologia isolada pode ser insuficiente.</div>
-        <div class="guide-bottom"><p>Referências científicas: CDC DPDx (botão em cada ficha). As imagens são esquemas didáticos, não microfotografias nem material diagnóstico.</p>
+        <div class="guide-bottom"><p>Referências científicas: CDC DPDx (botão em cada ficha). Microfotografias fornecidas pela Equipe 4 para estudo; não constituem diagnóstico laboratorial.</p>
           <button class="btn btn-primary" type="button" data-action="${score().finished ? "restart" : "mission"}">${score().finished ? "Jogar novamente" : "Iniciar investigação"} ↗</button>
         </div>
       </section>`;
@@ -266,6 +272,7 @@
   function renderMission() {
     const mission = currentMission();
     const answered = hasAnswer(mission);
+    const visibleStage = mission.hideStage && !answered ? "Identifique o estágio" : mission.stage;
     const selection = answered ? state.progress.answers[mission.id].choice : null;
     const correct = selection === mission.answer;
     const usedHints = state.progress.hints[mission.id] || 0;
@@ -282,7 +289,7 @@
 
     let feedback = "";
     if (answered) {
-      const more = score().finished || state.progress.activeIndex === data.missions.length - 1;
+      const more = score().finished || state.progress.activeIndex === orderedMissions().length - 1;
       feedback = `
         <section class="answer-feedback ${correct ? "" : "incorrect"}" id="answer-feedback" tabindex="-1" aria-live="polite">
           <h3>${correct ? "✓ Identificação correta!" : "✦ Caso investigado!"}</h3>
@@ -296,27 +303,27 @@
     return `
       <section aria-labelledby="mission-title">
         <div class="mission-header">
-          <div><span class="eyebrow">INVESTIGAÇÃO EM ANDAMENTO <span class="text-gold">/ ${(state.progress.activeIndex + 1).toString().padStart(2, "0")} DE ${data.missions.length.toString().padStart(2, "0")}</span></span>
+          <div><span class="eyebrow">INVESTIGAÇÃO EM ANDAMENTO <span class="text-gold">/ ${(state.progress.activeIndex + 1).toString().padStart(2, "0")} DE ${orderedMissions().length.toString().padStart(2, "0")}</span></span>
             <h1 id="mission-title">${escapeHtml(mission.title)}</h1><p>${escapeHtml(mission.eyebrow)} · ${escapeHtml(mission.specimen)}</p></div>
-          <span class="tag mission-badge">${score().answered}/${data.missions.length} concluídas</span>
+          <span class="tag mission-badge">${score().answered}/${orderedMissions().length} concluídas</span>
         </div>
-        <div class="progress-track" role="progressbar" aria-label="Progresso de missões respondidas" aria-valuemin="0" aria-valuemax="${data.missions.length}" aria-valuenow="${score().answered}">
-          <span style="width:${score().answered / data.missions.length * 100}%"></span>
+        <div class="progress-track" role="progressbar" aria-label="Progresso de missões respondidas" aria-valuemin="0" aria-valuemax="${orderedMissions().length}" aria-valuenow="${score().answered}">
+          <span style="width:${score().answered / orderedMissions().length * 100}%"></span>
         </div>
-        <div class="mission-map" aria-label="Mapa do progresso das dez missões">
-          ${orderedMissions().map((entry, index) => `<span class="mission-map-cell ${hasAnswer(entry) ? "done" : index === state.progress.activeIndex ? "active" : ""}" title="Missão ${index + 1}: ${escapeHtml(entry.stage)}" aria-label="Missão ${index + 1}: ${hasAnswer(entry) ? "respondida" : index === state.progress.activeIndex ? "atual" : "pendente"}">${index + 1}</span>`).join("")}
+        <div class="mission-map" aria-label="Mapa do progresso das missões">
+          ${orderedMissions().map((entry, index) => `<span class="mission-map-cell ${hasAnswer(entry) ? "done" : index === state.progress.activeIndex ? "active" : ""}" title="Missão ${index + 1}: ${escapeHtml(entry.hideStage && !hasAnswer(entry) ? "Estágio em investigação" : entry.stage)}" aria-label="Missão ${index + 1}: ${hasAnswer(entry) ? "respondida" : index === state.progress.activeIndex ? "atual" : "pendente"}">${index + 1}</span>`).join("")}
         </div>
         <div class="mission-layout">
           <article class="lab-panel">
-            <div class="panel-head"><span>FICHA DO CASO / ${(state.progress.activeIndex + 1).toString().padStart(2, "0")}</span><strong>● AMOSTRA FICTÍCIA</strong></div>
+            <div class="panel-head"><span>FICHA DO CASO / ${(state.progress.activeIndex + 1).toString().padStart(2, "0")}</span><strong>● MICROFOTOGRAFIA</strong></div>
             <div class="story-box"><span class="micro-label">SITUAÇÃO-PROBLEMA</span><p>${escapeHtml(mission.scenario)}</p></div>
             <div class="specimen-card">
-              <div class="specimen-header"><h2>Estrutura misteriosa</h2><span>${escapeHtml(mission.stage)}</span></div>
-              <button type="button" class="specimen-view" data-action="zoom" aria-label="Ampliar o esquema didático da estrutura">
-                <img src="${mission.image}" alt="${escapeHtml(mission.alt)}">
+              <div class="specimen-header"><h2>Estrutura misteriosa</h2><span>${escapeHtml(visibleStage)}</span></div>
+              <button type="button" class="specimen-view" data-action="zoom" aria-label="Ampliar a microfotografia da estrutura">
+                ${missionPhoto(mission)}
                 <span class="zoom-chip">⌕ AMPLIAR</span>
               </button>
-              <p class="specimen-caption">ESQUEMA DIDÁTICO — não é microfotografia e não está em escala.</p>
+              <p class="specimen-caption">Microfotografia fornecida pela Equipe 4. Caso didático; os detalhes visíveis dependem do preparo e do plano de foco.</p>
             </div>
           </article>
           <article class="investigation-panel">
@@ -349,7 +356,7 @@
       return `<section class="result-wrap"><h1>Relatórios</h1><p>Conclua uma investigação para salvar seu primeiro relatório.</p>
         <button class="btn btn-primary" type="button" data-action="mission">Iniciar investigação ↗</button></section>`;
     }
-    const summary = logic.calculateScore(data.missions, report.answers);
+    const summary = logic.calculateScore(logic.missionsForReport(data.missions, report), report.answers);
     const formatDuration = (value) => {
       if (value === null) return "Tempo não registrado";
       const seconds = Math.floor(value / 1000);
@@ -358,7 +365,7 @@
       return `${hours ? `${hours} h ` : ""}${minutes} min ${seconds % 60} s`;
     };
     const history = availableReports().map((entry, index) => {
-      const result = logic.calculateScore(data.missions, entry.answers);
+      const result = logic.calculateScore(logic.missionsForReport(data.missions, entry), entry.answers);
       const number = state.reports.length - index;
       const label = index < state.reports.length ? `Partida ${number}` : "Melhor partida";
       const best = entry.id === state.bestReport?.id;
@@ -376,7 +383,7 @@
       : summary.correct === 0
         ? "Sua investigação foi concluída. Revise as explicações e tente outra vez quando quiser."
         : "Investigação concluída! Revise os detalhes para fortalecer a identificação morfológica.";
-    const reviews = data.missions.map((mission) => {
+    const reviews = logic.missionsForReport(data.missions, report).map((mission) => {
       const selected = report.answers[mission.id].choice;
       const isCorrect = selected === mission.answer;
       return `
@@ -419,7 +426,7 @@
         </div>
         <h2 class="review-title">Revisão dos casos</h2>
         <div class="review-list">${reviews}</div>
-        <div class="guide-bottom"><p>Este resultado fica somente neste navegador e não é enviado a um servidor. Os esquemas são didáticos e não substituem lâminas reais nem testes confirmatórios.</p>
+        <div class="guide-bottom"><p>Este resultado fica somente neste navegador e não é enviado a um servidor. As microfotografias são usadas para estudo e não substituem avaliação laboratorial nem testes confirmatórios.</p>
           <div class="result-actions">
             <button class="btn btn-primary" type="button" data-action="restart">Jogar novamente ↗</button>
             <button class="btn btn-soft" type="button" data-action="guide">Abrir colinha ↗</button>
@@ -483,10 +490,10 @@
     modalRoot.innerHTML = `
       <div class="modal-backdrop" data-action="zoom-backdrop">
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
-          <div class="modal-header"><h2 id="modal-title">Estrutura ampliada · ${escapeHtml(mission.stage)}</h2>
+          <div class="modal-header"><h2 id="modal-title">Estrutura ampliada · ${escapeHtml(mission.hideStage && !hasAnswer(mission) ? "Estágio em investigação" : mission.stage)}</h2>
           <button class="close-button" type="button" data-action="close-zoom" aria-label="Fechar imagem ampliada">×</button></div>
-          <img src="${mission.image}" alt="${escapeHtml(mission.alt)}">
-          <p>Esquema didático e sem escala, não microfotografia. A identificação microscópica real precisa de imagens e métodos validados.</p>
+          ${missionPhoto(mission)}
+          <p>Microfotografia fornecida pela Equipe 4 para estudo. A identificação real exige métodos validados e avaliação laboratorial.</p>
         </div>
       </div>`;
     document.body.style.overflow = "hidden";
@@ -504,7 +511,7 @@
   async function shareResult() {
     const report = availableReports().find((entry) => entry.id === state.selectedReportId) || availableReports()[0];
     if (!report) return;
-    const summary = logic.calculateScore(data.missions, report.answers);
+    const summary = logic.calculateScore(logic.missionsForReport(data.missions, report), report.answers);
     const summaryText = `PARASITOLAB — O mistério das estruturas\nMissões: ${summary.answered}/${summary.total}\nAcertos: ${summary.correct}/${summary.total}\nPontos: ${summary.points}/${summary.maxPoints}\nEquipe 4`;
     let copied = false;
     try {

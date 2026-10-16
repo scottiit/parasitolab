@@ -187,6 +187,19 @@ h3 { font-size: 19px; }
 .organism-top .tag { white-space: nowrap; flex-shrink: 0; }
 .cdc-reference { min-height: 44px; text-decoration: none; }
 .cdc-reference:hover { background: rgba(102, 199, 157, .18); border-color: var(--mint); }
+.stage-gallery { display: grid; gap: 20px; margin-top: 16px; }
+.guide-photo { margin: 0; }
+.guide-photo img { display: block; width: 100%; height: 240px; object-fit: contain; background: #0b252b; border-radius: 10px; }
+.guide-photo figcaption { margin-top: 10px; font-size: 12px; }
+.guide-photo figcaption strong { color: var(--mint); }
+.guide-photo figcaption p { margin: 5px 0; color: var(--muted); }
+.guide-photo ul { padding-left: 18px; color: var(--muted); font-size: 12px; }
+.photo-credit { color: var(--muted-2); font-size: 10px; margin: 12px 0 0; }
+.specimen-view img.microphoto-image, .modal-dialog img.microphoto-image {
+  display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; padding: 0;
+  clip-path: inset(0 0 var(--clip-bottom, 0%) 0);
+}
+.modal-dialog img.microphoto-image { max-height: 65vh; margin: 0 auto; }
 .organism-body { display: flex; gap: 22px; margin-top: 17px; align-items: center; }
 .organism-thumbnail { display: grid; place-items: center; width: 144px; height: 144px; border: 1px solid var(--stroke); border-radius: 14px; background: #0b252b; flex-shrink: 0; overflow: hidden; }
 .organism-thumbnail img { width: 100%; height: 100%; object-fit: contain; }

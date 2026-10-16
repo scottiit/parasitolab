@@ -39,7 +39,11 @@
       const decoded = JSON.parse(source);
       if (!decoded || typeof decoded !== "object") return initialProgress();
       const ids = missions.map(mission => mission.id);
-      const missionOrder = validOrder(decoded.missionOrder, ids) ? [...decoded.missionOrder] : ids;
+      const legacyIds = ids.slice(0, 10);
+      const fallbackIds = ids.some(id => !legacyIds.includes(id) && decoded.answers && Object.hasOwn(decoded.answers, id))
+        ? ids : legacyIds;
+      const missionOrder = validOrder(decoded.missionOrder, ids) || validOrder(decoded.missionOrder, legacyIds)
+        ? [...decoded.missionOrder] : fallbackIds;
       const optionOrders = Object.fromEntries(missions.map(mission => {
         const options = decoded.optionOrders && decoded.optionOrders[mission.id];
         return [mission.id, validOrder(options, mission.options) ? [...options] : [...mission.options]];
@@ -61,8 +65,8 @@
         }
       }
       let activeIndex = Number.isInteger(decoded.activeIndex) ? decoded.activeIndex : 0;
-      activeIndex = Math.min(Math.max(activeIndex, 0), Math.max(0, missions.length - 1));
-      const allAnswered = missions.every((mission) => Object.hasOwn(answers, mission.id));
+      activeIndex = Math.min(Math.max(activeIndex, 0), Math.max(0, missionOrder.length - 1));
+      const allAnswered = missionOrder.every((id) => Object.hasOwn(answers, id));
       if (!allAnswered && Object.hasOwn(answers, missionOrder[activeIndex])) {
         const next = missionOrder.findIndex((id) => !Object.hasOwn(answers, id));
         if (next >= 0) activeIndex = next;
@@ -135,9 +139,16 @@
           const choice = entry.answers && entry.answers[mission.id] && entry.answers[mission.id].choice;
           if (mission.options.includes(choice)) answers[mission.id] = { choice };
         }
-        if (!calculateScore(missions, answers).finished) continue;
+        const allIds = missions.map(mission => mission.id);
+        const legacyIds = allIds.slice(0, 10);
+        let missionIds;
+        if (validOrder(entry.missionIds, allIds) || validOrder(entry.missionIds, legacyIds)) missionIds = [...entry.missionIds];
+        else if (entry.missionIds !== undefined) continue;
+        else missionIds = calculateScore(missions, answers).finished ? allIds : legacyIds;
+        const reportMissions = missions.filter(mission => missionIds.includes(mission.id));
+        if (!calculateScore(reportMissions, answers).finished) continue;
         ids.add(entry.id);
-        reports.push({ id: entry.id, durationMs: validDuration ? entry.durationMs : null, answers });
+        reports.push({ id: entry.id, durationMs: validDuration ? entry.durationMs : null, answers, missionIds });
       }
       return reports.slice(0, 10);
     } catch {
@@ -157,12 +168,16 @@
   function bestReport(missions, reports, previous = null) {
     return reports.reduce((best, report) => {
       if (!best) return report;
-      const points = calculateScore(missions, report.answers).points;
-      const bestPoints = calculateScore(missions, best.answers).points;
+      const points = calculateScore(missionsForReport(missions, report), report.answers).points;
+      const bestPoints = calculateScore(missionsForReport(missions, best), best.answers).points;
       const time = report.durationMs === null ? Infinity : report.durationMs;
       const bestTime = best.durationMs === null ? Infinity : best.durationMs;
       return points > bestPoints || (points === bestPoints && time < bestTime) ? report : best;
     }, previous);
+  }
+
+  function missionsForReport(missions, report) {
+    return report.missionIds ? report.missionIds.map(id => missions.find(mission => mission.id === id)) : missions;
   }
 
   function safeLoadBestReport(storage, missions) {
@@ -186,6 +201,7 @@
     safeLoadReports,
     safeSaveReports,
     bestReport,
+    missionsForReport,
     safeLoadBestReport,
     safeSaveBestReport
   });
