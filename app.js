@@ -31,6 +31,18 @@
   };
 
   const letters = ["A", "B", "C", "D"];
+  const iconShapes = {
+    "arrow-up-right": '<path d="M6 18 18 6M6 6h12v12"/>',
+    "arrow-right": '<path d="M4 12h16m-7-7 7 7-7 7"/>',
+    "arrow-left": '<path d="M20 12H4m7-7-7 7 7 7"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
+    sparkle: '<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/>',
+    burst: '<path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4"/>',
+    copy: '<rect x="8" y="8" width="12" height="12" rx="1"/><path d="M15 8V4H4v11h4"/>',
+    dot: '<circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>'
+  };
+  const icon = (name) => `<svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${iconShapes[name]}</svg>`;
   const escapeHtml = (value) => String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -165,16 +177,16 @@
           <h1 id="hero-title">Há um mistério em <span class="text-mint">cada estrutura.</span></h1>
           <p class="hero-lead">Uma amostra chegou ao laboratório. Observe as pistas, investigue os detalhes e descubra qual parasita está por trás de cada caso.</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" type="button" data-action="${progressScore.finished ? "restart" : "mission"}">${primaryText} <span class="icon-arrow" aria-hidden="true">↗</span></button>
-            ${availableReports().length && guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="reports">Ver relatórios →</button>` : ""}
-            ${guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="guide">Consultar colinha <span aria-hidden="true">→</span></button>` : ""}
+            <button class="btn btn-primary" type="button" data-action="${progressScore.finished ? "restart" : "mission"}">${primaryText} ${icon("arrow-up-right")}</button>
+            ${availableReports().length && guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="reports">Ver relatórios ${icon("arrow-right")}</button>` : ""}
+            ${guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="guide">Consultar colinha ${icon("arrow-right")}</button>` : ""}
             ${hasProgress && !progressScore.finished ? `<button class="btn btn-ghost" type="button" data-action="abandon" aria-describedby="abandon-note">Desistir da investigação</button>` : ""}
           </div>
           ${hasProgress && !progressScore.finished ? `<p class="hero-footnote" id="abandon-note">Desistir apaga o progresso da partida atual. Seus relatórios anteriores são mantidos.</p>` : ""}
           <div class="hero-footnote"><span class="spark" aria-hidden="true"></span> ${logic.QUESTIONS_PER_GAME} perguntas por investigação · ${data.missions.length} no catálogo · Sem cadastro · Gratuito</div>
         </div>
         <div class="hero-visual" aria-label="Ilustração conceitual de uma investigação em laboratório">
-          <div class="visual-top"><span class="micro-label">AMOSTRA EM ANÁLISE</span><span class="visual-pill">● SINAL ATIVO</span></div>
+          <div class="visual-top"><span class="micro-label">AMOSTRA EM ANÁLISE</span><span class="visual-pill">${icon("dot")} SINAL ATIVO</span></div>
           <img class="hero-specimen" src="./assets/hero-lab.svg" alt="Arte ilustrada de uma estrutura biológica em um visor circular com marcações de laboratório.">
           <div class="visual-bottom"><div><small>EXPERIMENTO</small><strong>Identificação morfológica</strong></div><code>REF. LAB-004</code></div>
         </div>
@@ -215,7 +227,7 @@
       <article class="organism-card verified" aria-label="Ficha de ${escapeHtml(organism.name)}">
         <div class="organism-top">
           <h3>${escapeHtml(organism.name)}<small>Estágios e contextos no material da equipe</small></h3>
-          <a class="tag cdc-reference" href="${escapeHtml(organism.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Referência CDC de ${escapeHtml(organism.name)} (abre em nova aba)">Referência CDC ↗</a>
+          <a class="tag cdc-reference" href="${escapeHtml(organism.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Referência CDC de ${escapeHtml(organism.name)} (abre em nova aba)">Referência CDC ${icon("arrow-up-right")}</a>
         </div>
         <div class="stage-gallery">${gallery}</div>
         <div class="card-difference"><strong>Para diferenciar:</strong> ${escapeHtml(organism.difference)}${organism.note ? `<p class="organism-note"><strong>Atenção:</strong> ${escapeHtml(organism.note)}</p>` : ""}</div>
@@ -255,17 +267,17 @@
         <div class="page-heading">
           <div><span class="eyebrow">ARQUIVO DO INVESTIGADOR</span><h1 id="guide-title">Colinha <span class="text-mint">de campo.</span></h1>
           <p>Consulte o catálogo da Equipe 4 antes de iniciar ou após concluir a investigação. Os dez organismos têm fichas com microfotografias e os estágios e contextos presentes no material da equipe.</p></div>
-          <button class="btn btn-ghost" type="button" data-action="guide-back">← ${backText}</button>
+          <button class="btn btn-ghost" type="button" data-action="guide-back">${icon("arrow-left")} ${backText}</button>
         </div>
         <div class="guide-toolbar">
           <div class="guide-stats"><span><strong>${data.organisms.length}</strong> organismos na lista</span><span><strong>${ready}</strong> fichas com referência</span></div>
-          <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar organismo</span>
+          <label class="search-box">${icon("search")}<span class="sr-only">Buscar organismo</span>
             <input id="guide-search" type="search" placeholder="Buscar organismo..." value="${escapeHtml(state.search)}" autocomplete="off"></label>
         </div>
         <div class="organism-grid" id="organism-grid">${renderGuideCards()}</div>
         <div class="notice"><strong>Nota científica:</strong> cada missão usa o estágio explicitado na ficha, que pode ser trofozoíto, cisto, oocisto ou forma vacuolar. Para confirmação da espécie de E. histolytica e de Cryptosporidium, a morfologia isolada pode ser insuficiente.</div>
         <div class="guide-bottom"><p>Referências científicas: CDC DPDx (botão em cada ficha). Microfotografias fornecidas pela Equipe 4 para estudo; não constituem diagnóstico laboratorial.</p>
-          <button class="btn btn-primary" type="button" data-action="${score().finished ? "restart" : "mission"}">${score().finished ? "Jogar novamente" : "Iniciar investigação"} ↗</button>
+          <button class="btn btn-primary" type="button" data-action="${score().finished ? "restart" : "mission"}">${score().finished ? "Jogar novamente" : "Iniciar investigação"} ${icon("arrow-up-right")}</button>
         </div>
       </section>`;
   }
@@ -285,7 +297,7 @@
       const isCorrect = answered && option === mission.answer;
       const isWrongSelection = answered && option === selection && !correct;
       const optionClass = isCorrect ? "option-correct" : isWrongSelection ? "option-incorrect" : "";
-      const suffix = isCorrect ? " ✓" : isWrongSelection ? " ✕" : "";
+      const suffix = isCorrect ? " (correta)" : isWrongSelection ? " (incorreta)" : "";
       return `<button type="button" class="option ${optionClass}" data-action="answer" data-choice="${index}" ${answered ? "disabled" : ""} aria-label="Alternativa ${letters[index]}: ${escapeHtml(option)}${suffix}">
         <span class="option-index">${letters[index]}</span><span>${escapeHtml(option)}</span></button>`;
     }).join("");
@@ -295,11 +307,11 @@
       const more = score().finished || state.progress.activeIndex === orderedMissions().length - 1;
       feedback = `
         <section class="answer-feedback ${correct ? "" : "incorrect"}" id="answer-feedback" tabindex="-1" aria-live="polite">
-          <h3>${correct ? "✓ Identificação correta!" : "✦ Caso investigado!"}</h3>
+          <h3>${icon(correct ? "check" : "sparkle")} ${correct ? "Identificação correta!" : "Caso investigado!"}</h3>
           <p>${correct ? `Você somou ${missionPoints} pontos nesta missão. ` : `A resposta correta era ${escapeHtml(mission.answer)}. `}
             ${escapeHtml(mission.explanation)}</p>
-          <a class="card-source" href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">Consultar a fonte: ${escapeHtml(mission.sourceName)} ↗</a>
-          <button class="btn btn-primary btn-block" type="button" data-action="next">${more ? "Ver relatório final →" : "Próxima missão →"}</button>
+          <a class="card-source" href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">Consultar a fonte: ${escapeHtml(mission.sourceName)} ${icon("arrow-up-right")}</a>
+          <button class="btn btn-primary btn-block" type="button" data-action="next">${more ? "Ver relatório final" : "Próxima missão"} ${icon("arrow-right")}</button>
         </section>`;
     }
 
@@ -318,13 +330,13 @@
         </div>
         <div class="mission-layout">
           <article class="lab-panel">
-            <div class="panel-head"><span>FICHA DO CASO / ${(state.progress.activeIndex + 1).toString().padStart(2, "0")}</span><strong>● MICROFOTOGRAFIA</strong></div>
+            <div class="panel-head"><span>FICHA DO CASO / ${(state.progress.activeIndex + 1).toString().padStart(2, "0")}</span><strong>${icon("dot")} MICROFOTOGRAFIA</strong></div>
             <div class="story-box"><span class="micro-label">SITUAÇÃO-PROBLEMA</span><p>${escapeHtml(mission.scenario)}</p></div>
             <div class="specimen-card">
               <div class="specimen-header"><h2>Estrutura misteriosa</h2><span>${escapeHtml(visibleStage)}</span></div>
               <button type="button" class="specimen-view" data-action="zoom" aria-label="Ampliar a microfotografia da estrutura">
                 ${missionPhoto(mission)}
-                <span class="zoom-chip">⌕ AMPLIAR</span>
+                <span class="zoom-chip">${icon("search")} AMPLIAR</span>
               </button>
               <p class="specimen-caption">Microfotografia fornecida pela Equipe 4. Caso didático; os detalhes visíveis dependem do preparo e do plano de foco.</p>
             </div>
@@ -336,7 +348,7 @@
               <h2>${escapeHtml(mission.question)}</h2>
               <div class="hint-panel">
                 <div class="hint-row">
-                  <div><div class="hint-title">✧ Pistas do investigador</div><p class="hint-caption">${answered ? `Pontos nesta questão: ${missionPoints}` : `Valor do acerto: ${missionPoints} pontos · −25 por pista`}</p></div>
+                  <div><div class="hint-title">${icon("sparkle")} Pistas do investigador</div><p class="hint-caption">${answered ? `Pontos nesta questão: ${missionPoints}` : `Valor do acerto: ${missionPoints} pontos · −25 por pista`}</p></div>
                   <button class="hint-button" type="button" data-action="hint" ${usedHints >= mission.hints.length || answered ? "disabled" : ""}>${usedHints >= mission.hints.length ? "Todas abertas" : `Abrir pista ${usedHints + 1} (−25)`}</button>
                 </div>
                 ${usedHints ? `<ol class="hints-list">${displayedHints}</ol>` : ""}
@@ -357,7 +369,7 @@
     const report = availableReports().find((entry) => entry.id === state.selectedReportId) || availableReports()[0];
     if (!report) {
       return `<section class="result-wrap"><h1>Relatórios</h1><p>Conclua uma investigação para salvar seu primeiro relatório.</p>
-        <button class="btn btn-primary" type="button" data-action="mission">Iniciar investigação ↗</button></section>`;
+        <button class="btn btn-primary" type="button" data-action="mission">Iniciar investigação ${icon("arrow-up-right")}</button></section>`;
     }
     const summary = logic.calculateScore(logic.missionsForReport(data.missions, report), report.answers);
     const formatDuration = (value) => {
@@ -395,7 +407,7 @@
           <span class="tag ${isCorrect ? "" : "tag-warning"}">${isCorrect ? `Acertou · +${logic.answerPoints(mission, report.answers[mission.id])}` : "Revisar · +0"}</span></div>
           <p><strong>Sua resposta:</strong> ${escapeHtml(selected)}<br><strong>Resposta correta:</strong> ${escapeHtml(mission.answer)}</p>
           <p>${escapeHtml(mission.explanation)}</p>
-          <a href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(mission.sourceName)} ↗</a>
+          <a href="${mission.sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(mission.sourceName)} ${icon("arrow-up-right")}</a>
         </article>`;
     }).join("");
     return `
@@ -412,7 +424,7 @@
           </div>
         </section>
         <div class="result-hero">
-          <div class="result-symbol" aria-hidden="true">✳</div>
+          <div class="result-symbol" aria-hidden="true">${icon("burst")}</div>
           <span class="eyebrow">RELATÓRIO DE INVESTIGAÇÃO</span>
           <h1 id="result-title">Missão <span class="text-mint">concluída.</span></h1>
           <p>${msg}</p>
@@ -423,16 +435,16 @@
             <div><strong>${summary.percentage}%</strong><span>Precisão</span></div>
           </div>
           <div class="result-actions">
-            <button class="btn btn-primary" type="button" data-action="restart">Jogar novamente ↗</button>
-            <button class="btn btn-ghost" type="button" data-action="share">Copiar resultado ⧉</button>
+            <button class="btn btn-primary" type="button" data-action="restart">Jogar novamente ${icon("arrow-up-right")}</button>
+            <button class="btn btn-ghost" type="button" data-action="share">Copiar resultado ${icon("copy")}</button>
           </div>
         </div>
         <h2 class="review-title">Revisão dos casos</h2>
         <div class="review-list">${reviews}</div>
         <div class="guide-bottom"><p>Este resultado fica somente neste navegador e não é enviado a um servidor. As microfotografias são usadas para estudo e não substituem avaliação laboratorial nem testes confirmatórios.</p>
           <div class="result-actions">
-            <button class="btn btn-primary" type="button" data-action="restart">Jogar novamente ↗</button>
-            <button class="btn btn-soft" type="button" data-action="guide">Abrir colinha ↗</button>
+            <button class="btn btn-primary" type="button" data-action="restart">Jogar novamente ${icon("arrow-up-right")}</button>
+            <button class="btn btn-soft" type="button" data-action="guide">Abrir colinha ${icon("arrow-up-right")}</button>
           </div></div>
       </section>`;
   }
@@ -551,8 +563,8 @@
     announce(copied ? "Resultado copiado." : "Não foi possível copiar automaticamente neste navegador.");
     const button = main.querySelector('[data-action="share"]');
     if (button && copied) {
-      button.textContent = "Copiado ✓";
-      window.setTimeout(() => { if (document.contains(button)) button.textContent = "Copiar resultado ⧉"; }, 2000);
+      button.innerHTML = `Copiado ${icon("check")}`;
+      window.setTimeout(() => { if (document.contains(button)) button.innerHTML = `Copiar resultado ${icon("copy")}`; }, 2000);
     }
   }
 

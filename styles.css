@@ -130,7 +130,8 @@ h3 { font-size: 19px; }
 .btn-soft { background: #1c3d40; color: var(--mint); border-color: var(--stroke); }
 .btn-danger { color: var(--salmon); border-color: rgba(233, 157, 145, .24); background: rgba(134, 56, 52, .13); }
 .btn-block { width: 100%; }
-.icon-arrow { font-size: 19px; line-height: 0; }
+.ui-icon { display: inline-block; width: 1em; height: 1em; flex-shrink: 0; vertical-align: -.15em; }
+.btn .ui-icon, .search-box .ui-icon { width: 16px; height: 16px; }
 .hero-footnote { display: flex; align-items: center; gap: 11px; margin-top: 27px; color: var(--muted-2); font-size: 12px; }
 .spark { width: 9px; height: 9px; border-radius: 50%; background: #82dfaa; box-shadow: 0 0 0 4px rgba(130, 223, 170, .10); }
 .hero-visual {
@@ -281,6 +282,7 @@ h3 { font-size: 19px; }
 .result-wrap { max-width: 830px; margin: 0 auto; }
 .result-hero { padding: 40px; border: 1px solid var(--stroke-strong); border-radius: 24px; background: radial-gradient(circle at 85% 16%, rgba(160, 233, 163, .13), transparent 37%), #102f33; text-align: center; }
 .result-symbol { width: 60px; height: 60px; background: #204b42; border: 1px solid var(--stroke-strong); border-radius: 20px; display: grid; place-items: center; margin: 0 auto 22px; font-size: 25px; color: var(--mint); }
+.result-symbol .ui-icon { width: 28px; height: 28px; }
 .result-hero h1 { font-size: clamp(34px, 5vw, 56px); margin: 10px 0 11px; }
 .result-hero p { color: var(--muted); margin: 0 auto; max-width: 500px; font-size: 14px; }
 .scoreline { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 35px; margin: 33px auto 30px; padding: 23px 0; border-block: 1px solid var(--stroke); }
