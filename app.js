@@ -168,7 +168,9 @@
             <button class="btn btn-primary" type="button" data-action="${progressScore.finished ? "restart" : "mission"}">${primaryText} <span class="icon-arrow" aria-hidden="true">↗</span></button>
             ${availableReports().length && guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="reports">Ver relatórios →</button>` : ""}
             ${guideAvailable() ? `<button class="btn btn-ghost" type="button" data-action="guide">Consultar colinha <span aria-hidden="true">→</span></button>` : ""}
+            ${hasProgress && !progressScore.finished ? `<button class="btn btn-ghost" type="button" data-action="abandon" aria-describedby="abandon-note">Desistir da investigação</button>` : ""}
           </div>
+          ${hasProgress && !progressScore.finished ? `<p class="hero-footnote" id="abandon-note">Desistir apaga o progresso da partida atual. Seus relatórios anteriores são mantidos.</p>` : ""}
           <div class="hero-footnote"><span class="spark" aria-hidden="true"></span> ${data.missions.length} missões completas disponíveis · Sem cadastro · Gratuito</div>
         </div>
         <div class="hero-visual" aria-label="Ilustração conceitual de uma investigação em laboratório">
@@ -486,6 +488,17 @@
     announce("Nova investigação iniciada.");
   }
 
+  function abandonInvestigation() {
+    if (state.screen !== "home" || !state.progress.started || score().finished) return;
+    state.progress = logic.initialProgress();
+    const cleared = logic.safeClearProgress(storage) || persist();
+    state.guideReturn = "home";
+    state.selectedReportId = null;
+    showScreen("home");
+    announce(cleared ? "Investigação encerrada. A colinha está disponível e seus relatórios foram mantidos."
+      : "Investigação encerrada nesta sessão. Não foi possível atualizar o progresso salvo neste navegador.");
+  }
+
   function openZoom() {
     const mission = currentMission();
     state.lastFocused = document.activeElement;
@@ -557,6 +570,7 @@
     else if (action === "answer") submitAnswer(Number(target.dataset.choice));
     else if (action === "next") nextMission();
     else if (action === "restart") restart();
+    else if (action === "abandon") abandonInvestigation();
     else if (action === "zoom") openZoom();
     else if (action === "close-zoom") closeZoom();
     else if (action === "zoom-backdrop" && target === event.target) closeZoom();

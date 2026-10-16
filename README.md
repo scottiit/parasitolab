@@ -13,6 +13,7 @@ Estudar dez organismos em quinze casos didáticos com microfotografias, observan
 3. Observe a microfotografia e amplie a imagem. Há até duas pistas; cada uma reduz em **25 pontos** o valor do acerto naquela questão.
 4. Escolha uma alternativa e confira a explicação. Um acerto vale **100 pontos sem pistas**, **75 com uma pista** ou **50 com duas**. Um erro vale **0**. O máximo por nova partida é **1.500 pontos**.
 5. Ao concluir, revise o relatório ou jogue novamente. A colinha volta a ficar disponível.
+6. Para abandonar uma partida em andamento, volte ao **Início** e clique em **Desistir da investigação**. Isso apaga o progresso da partida atual, libera a colinha e mantém os relatórios anteriores. Uma partida abandonada não gera relatório.
 
 ## Organismos e estágios representados
 
